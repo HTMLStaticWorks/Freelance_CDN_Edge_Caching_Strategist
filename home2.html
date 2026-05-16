@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Edge | EdgeFlux</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,5 95,25 95,75 50,95 5,75 5,25%22 fill=%22%232563EB%22/><path d=%22M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 2rem 0;
+            background: rgba(var(--bg-rgb), 0.5);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+
+        .company-pill {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            margin: 0 2rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-weight: 600;
+            opacity: 0.6;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 1.5rem;
+        }
+
+        .bento-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .bento-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .bento-large {
+            grid-column: span 2;
+        }
+
+        .solution-card {
+            display: flex;
+            gap: 2rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .solution-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-large {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                        <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                            stroke-width="5" stroke-linecap="round" />
+                    </svg>
+                    EdgeFlux
+                </a>
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home 1</a></li>
+                            <li><a href="home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="results.html">Results</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <button class="btn-icon" id="theme-toggle" title="Toggle Theme">🌙</button>
+                    <button class="btn-icon" id="rtl-toggle" title="Toggle RTL">⇄</button>
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <button class="btn-icon mobile-toggle" id="menu-toggle">☰</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                    <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                        stroke-width="5" stroke-linecap="round" />
+                </svg>
+                EdgeFlux
+            </a>
+            <button class="btn-icon" id="close-menu" style="background:none; border:none; font-size: 1.5rem; color: var(--text);">✕</button>
+        </div>
+        <div class="mobile-nav-content">
+            <ul class="mobile-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="mobile-nav-footer">
+            <div class="mobile-controls">
+                <button class="btn-icon" id="theme-toggle-mob" title="Toggle Theme">🌙</button>
+                <button class="btn-icon" id="rtl-toggle-mob" title="Toggle RTL">⇄</button>
+            </div>
+            <a href="login.html" class="btn btn-primary" style="justify-content: center; width: 100%;">Login</a>
+        </div>
+    </div>
+
+    <!-- 1. Hero Section -->
+    <section class="hero" style="background-color: #020817; min-height: 95vh; padding-top: 120px;">
+        <div class="container">
+            <div class="feature-grid fade-in">
+                <div class="hero-text">
+                    <h1 style="font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 2rem;"> Enterprise
+                        <span style="color: var(--primary);">Standard</span>
+                    </h1>
+                    <p style="font-size: 1.25rem; color: #fff; margin-bottom: 3rem; max-width: 600px; opacity: 0.9;">
+                        Deploy
+                        sophisticated caching logic, origin shielding, and global load balancing in seconds. Built for
+                        scale, designed for speed.</p>
+                    <div class="hero-actions" style="justify-content: flex-start;">
+                        <button class="btn btn-primary">Get Enterprise Demo</button>
+                    </div>
+                </div>
+                <div class="feature-img" style="border: none; box-shadow: none;">
+                    <img src="assets/images/home2-hero.jpg" alt="Enterprise Dashboard" style="border-radius: 32px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Trust Marquee -->
+    <div class="marquee">
+        <div class="marquee-content">
+            <span class="company-pill">CloudStream</span>
+            <span class="company-pill">FastSaaS</span>
+            <span class="company-pill">TechCorp</span>
+            <span class="company-pill">Vortex AI</span>
+            <span class="company-pill">Nexus Web</span>
+            <span class="company-pill">EdgeNode</span>
+            <span class="company-pill">CloudStream</span>
+            <span class="company-pill">FastSaaS</span>
+            <span class="company-pill">TechCorp</span>
+            <span class="company-pill">Vortex AI</span>
+            <span class="company-pill">Nexus Web</span>
+            <span class="company-pill">EdgeNode</span>
+        </div>
+    </div>
+
+    <!-- 3. Smart Features (Bento) -->
+    <section class="feature-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                <h2 class="fade-in">Precision Engineering <br>at Every Node.</h2>
+            </div>
+            <div class="bento-grid">
+                <div class="bento-item bento-large fade-in">
+                    <h3 style="margin-bottom: 1rem;">Intelligent Purge Propogation</h3>
+                    <p style="color: var(--muted); margin-bottom: 2rem;">Invalidate cache by tags, paths, or headers
+                        across 40+ global POPs in under 150ms. Reliable, fast, and globally consistent.</p>
+                    <div
+                        style="background: var(--bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
+                        <code
+                            style="color: var(--primary);">curl -X PURGE https://api.edgeflux.io/v1/cache/tags/all</code>
+                    </div>
+                </div>
+                <div class="bento-item fade-in"
+                    style="background: linear-gradient(to bottom right, var(--card), rgba(37, 99, 235, 0.1));">
+                    <div style="font-size: 2rem; margin-bottom: 1.5rem;">🌍</div>
+                    <h4>Anycast Routing</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Direct users to the nearest healthy node
+                        automatically.</p>
+                </div>
+                <div class="bento-item fade-in">
+                    <h4>Origin Shield</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Protect your origin from spikes with a secondary
+                        caching layer.</p>
+                </div>
+                <div class="bento-item bento-large fade-in">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                        <div>
+                            <h3>Real-time Analytics</h3>
+                            <p style="color: var(--muted);">Gain deep insights into your traffic patterns and cache hit
+                                ratios with sub-second granularity.</p>
+                        </div>
+                        <div class="dashboard-mock" style="padding: 1rem;">
+                            <div class="chart-placeholder" style="height: 100px;">
+                                <div class="chart-bar" style="height: 60%;"></div>
+                                <div class="chart-bar" style="height: 80%;"></div>
+                                <div class="chart-bar" style="height: 40%;"></div>
+                                <div class="chart-bar" style="height: 90%;"></div>
+                                <div class="chart-bar" style="height: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Global Network Map -->
+    <section class="feature-section" style="background: var(--card);">
+        <div class="container">
+            <div class="feature-grid fade-in">
+                <div class="feature-img" style="border: none; box-shadow: none;">
+                    <img src="assets/images/network.jpg" alt="Global Network Map">
+                </div>
+                <div class="feature-text">
+                    <span class="badge">Global Presence</span>
+                    <h2>A Network Built for <br><span style="color: var(--primary);">Ultimate Reliability.</span></h2>
+                    <p style="color: var(--muted); margin-bottom: 2rem;">Our private fiber backbone connects major
+                        internet hubs, bypassing public congestion to deliver your content with sub-20ms latency
+                        globally.</p>
+                    <div class="stats-grid" style="grid-template-columns: 1fr 1fr; text-align: left;">
+                        <div class="stat-item">
+                            <h3>40+</h3>
+                            <p>Global POPs</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>10Tbps+</h3>
+                            <p>Network Capacity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Industry Solutions -->
+    <section class="feature-section">
+        <div class="container">
+            <div class="solution-card fade-in">
+                <div style="flex: 1;">
+                    <span class="badge success">Tailored Solutions</span>
+                    <h2 style="margin: 1.5rem 0;">Optimized for your <br>Specific Workload.</h2>
+                    <p style="color: var(--muted); margin-bottom: 2rem;">From high-volume E-commerce to low-latency SaaS
+                        APIs, we provide pre-configured templates and custom caching logic for every industry.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="card" style="padding: 1.5rem; background: var(--bg);">
+                            <h4 style="color: var(--primary);">E-commerce</h4>
+                            <p style="font-size: 0.8rem; opacity: 0.7;">Dynamic inventory & pricing caching.</p>
+                        </div>
+                        <div class="card" style="padding: 1.5rem; background: var(--bg);">
+                            <h4 style="color: var(--accent);">Streaming</h4>
+                            <p style="font-size: 0.8rem; opacity: 0.7;">Video-on-demand & live broadcast.</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="flex: 1;">
+                    <img src="assets/images/tailored.jpg" alt="Industry Solutions"
+                        style="border-radius: 24px; width: 100%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Performance Comparison -->
+    <section class="feature-section" style="background: var(--card);">
+        <div class="container">
+            <h2 class="fade-in" style="text-align: center; margin-bottom: 4rem;">Don't Just Take Our Word For It.</h2>
+            <div class="fade-in"
+                style="overflow-x: auto; background: var(--bg); border-radius: 24px; border: 1px solid var(--border);">
+                <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--border); text-align: left;">
+                            <th style="padding: 2rem;">Network Performance</th>
+                            <th style="padding: 2rem;">Traditional CDN</th>
+                            <th style="padding: 2rem; color: var(--primary);">EdgeFlux Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 2rem; font-weight: 600;">P99 Latency (Global)</td>
+                            <td style="padding: 2rem;">45ms - 120ms</td>
+                            <td style="padding: 2rem; font-weight: 700; color: var(--success);">&lt;18ms</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 2rem; font-weight: 600;">Cold Start Time</td>
+                            <td style="padding: 2rem;">~250ms</td>
+                            <td style="padding: 2rem; font-weight: 700; color: var(--success);">Zero (Pre-warmed)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 2rem; font-weight: 600;">DDoS Mitigation</td>
+                            <td style="padding: 2rem;">Reactive</td>
+                            <td style="padding: 2rem; font-weight: 700; color: var(--success);">Predictive AI</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CTA Banner -->
+    <section class="cta-banner" style="padding-bottom: 5rem;">
+        <div class="container">
+            <div class="card fade-in"
+                style="background: var(--primary); color: white; text-align: center; border: none; padding: 5rem;">
+                <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.5rem;">Ready to Own the Edge?</h2>
+                <p style="margin-bottom: 3rem; opacity: 0.9; font-size: 1.25rem;">Join the world's most innovative
+                    engineering teams.</p>
+                <div style="display: flex; justify-content: center; gap: 1.5rem;">
+                    <button class="btn" style="background: white; color: var(--primary); padding: 1rem 2.5rem;">Get
+                        Started Now</button>
+                    <button class="btn btn-outline"
+                        style="border-color: white; color: white; padding: 1rem 2.5rem;">Talk to an Expert</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                            <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                                stroke-width="5" stroke-linecap="round" />
+                        </svg>
+                        EdgeFlux
+                    </a>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Accelerate the Edge. Eliminate Latency. Own the Cache.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">𝕏</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">gh</a>
+                        <a href="#" class="social-icon">rss</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">CDN Architecture</a></li>
+                        <li><a href="#">TTL Optimization</a></li>
+                        <li><a href="#">Origin Shield</a></li>
+                        <li><a href="#">Edge Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="results.html">Results</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Updated</h4>
+                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get edge caching tips delivered to
+                        your inbox.</p>
+                    <form style="display: flex; gap: 0.5rem;">
+                        <input type="email" placeholder="email@example.com"
+                            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; flex: 1; color: white;">
+                        <button class="btn btn-primary">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.8rem; opacity: 0.6;">
+                <p>© 2026 EdgeFlux · All rights reserved.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top">↑</button>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About EdgeFlux | Our Mission & Timeline</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,5 95,25 95,75 50,95 5,75 5,25%22 fill=%22%232563EB%22/><path d=%22M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--border);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+            width: 50%;
+            padding-right: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+            padding-right: 0;
+            padding-left: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            right: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--border);
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            right: auto;
+            left: -8px;
+        }
+
+        .timeline-date {
+            font-family: 'DM Mono', monospace;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .card:hover .team-img {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .value-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                        <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                            stroke-width="5" stroke-linecap="round" />
+                    </svg>
+                    EdgeFlux
+                </a>
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home 1</a></li>
+                            <li><a href="home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="results.html">Results</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <button class="btn-icon" id="theme-toggle" title="Toggle Theme">🌙</button>
+                    <button class="btn-icon" id="rtl-toggle" title="Toggle RTL">⇄</button>
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <button class="btn-icon mobile-toggle" id="menu-toggle">☰</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                    <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                        stroke-width="5" stroke-linecap="round" />
+                </svg>
+                EdgeFlux
+            </a>
+            <button class="btn-icon" id="close-menu" style="background:none; border:none; font-size: 1.5rem; color: var(--text);">✕</button>
+        </div>
+        <div class="mobile-nav-content">
+            <ul class="mobile-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="mobile-nav-footer">
+            <div class="mobile-controls">
+                <button class="btn-icon" id="theme-toggle-mob" title="Toggle Theme">🌙</button>
+                <button class="btn-icon" id="rtl-toggle-mob" title="Toggle RTL">⇄</button>
+            </div>
+            <a href="login.html" class="btn btn-primary" style="justify-content: center; width: 100%;">Login</a>
+        </div>
+    </div>
+
+    <!-- 1. Hero Section -->
+    <!-- 1. Hero Section -->
+    <section class="hero" style="min-height: 60vh; background-color: #2563EB; color: white; text-align: center;">
+        <div class="container">
+            <div class="fade-in" style="max-width: 800px; margin: 0 auto;">
+                <h1 style="color: white; font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem;">Obsessed with <br>Zero Latency.</h1>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: 3rem;">We help high-growth teams optimize their edge infrastructure so they can focus on building products, not fighting origin overload.</p>
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="contact.html" class="btn" style="background: white; color: #2563EB;">Join Our Journey</a>
+                    <a href="#evolution" class="btn btn-outline" style="border-color: white; color: white;">View Our History</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Global Infrastructure Section (New) -->
+    <section class="feature-section">
+        <div class="container">
+            <div class="feature-grid fade-in">
+                <div class="feature-img" style="border: none; box-shadow: none;">
+                    <img src="assets/images/abt-img.jpg" alt="Global Data Center" style="border-radius: 32px;">
+                </div>
+                <div class="feature-text">
+                    <span class="badge">Global Operations</span>
+                    <h2>A Network Built for <br><span style="color: var(--primary);">Ultimate Reliability.</span></h2>
+                    <p style="color: var(--muted); margin-bottom: 2rem;">Our private fiber backbone connects major
+                        internet hubs, bypassing public congestion to deliver your content with sub-20ms latency
+                        globally.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div class="stat-item">
+                            <h3 style="color: var(--primary);">40+</h3>
+                            <p style="font-size: 0.9rem;">Global POPs</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 style="color: var(--primary);">99.99%</h3>
+                            <p style="font-size: 0.9rem;">Uptime SLA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Evolution Section -->
+    <section id="evolution" style="background: var(--card);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="fade-in">Our Evolution</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2018</div>
+                    <h4>The Foundation</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Started as a solo SRE consultant focusing on
+                        high-traffic e-commerce optimization.</p>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2020</div>
+                    <h4>Edge Focus</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Pivoted exclusively to Edge Caching and CDN
+                        strategy during the global traffic surge.</p>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2022</div>
+                    <h4>EdgeFlux Framework</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Developed our proprietary audit-to-accelerate
+                        framework for SaaS platforms.</p>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2024</div>
+                    <h4>Global Reach</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Supporting over 120+ clients across 40+ global
+                        POP networks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Collaborators Section -->
+    <section>
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                <h2 class="fade-in">The Collaborators</h2>
+                <p class="fade-in" style="color: var(--muted);">A distributed network of performance experts.</p>
+            </div>
+            <div class="grid-cards">
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/team_member_1.png" alt="Alex Rivera" class="team-img">
+                    <h3>Alex Rivera</h3>
+                    <p style="font-size: 0.8rem; color: var(--primary); font-weight: 700; margin-bottom: 1rem;">Lead SRE
+                    </p>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Specialist in multi-CDN failover and Anycast
+                        routing.</p>
+                </div>
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/team_member_2.png" alt="Sarah Chen" class="team-img">
+                    <h3>Sarah Chen</h3>
+                    <p style="font-size: 0.8rem; color: var(--primary); font-weight: 700; margin-bottom: 1rem;">Caching
+                        Architect</p>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Expert in surrogate keys and complex purge logic.
+                    </p>
+                </div>
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/team_member_3.png" alt="David Park" class="team-img">
+                    <h3>David Park</h3>
+                    <p style="font-size: 0.8rem; color: var(--primary); font-weight: 700; margin-bottom: 1rem;">Security
+                        Ops</p>
+                    <p style="font-size: 0.9rem; color: var(--muted);">DDoS mitigation and WAF tuning at the edge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Values Section -->
+    <section style="background: var(--card);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                <h2 class="fade-in">Our Values</h2>
+            </div>
+            <div class="grid-cards">
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/precision.jpg" alt="Precision" class="value-img">
+                    <h3>Precision</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted);">We don't guess. We measure every millisecond and
+                        every cache hit.</p>
+                </div>
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/velocity.jpg" alt="Velocity" class="value-img">
+                    <h3>Velocity</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Speed is our product. We optimize for the fastest
+                        possible time to first byte.</p>
+                </div>
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/stability.jpg" alt="Stability" class="value-img">
+                    <h3>Stability</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Performance shouldn't come at the cost of
+                        reliability. Origin safety is paramount.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                            <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                                stroke-width="5" stroke-linecap="round" />
+                        </svg>
+                        EdgeFlux
+                    </a>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Accelerate the Edge. Eliminate Latency. Own the Cache.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">𝕏</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">gh</a>
+                        <a href="#" class="social-icon">rss</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">CDN Architecture</a></li>
+                        <li><a href="#">TTL Optimization</a></li>
+                        <li><a href="#">Origin Shield</a></li>
+                        <li><a href="#">Edge Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="results.html">Results</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Updated</h4>
+                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get edge caching tips delivered to
+                        your inbox.</p>
+                    <form style="display: flex; gap: 0.5rem;">
+                        <input type="email" placeholder="email@example.com"
+                            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; flex: 1; color: white;">
+                        <button class="btn btn-primary">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.8rem; opacity: 0.6;">
+                <p>© 2026 EdgeFlux · All rights reserved.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top">↑</button>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

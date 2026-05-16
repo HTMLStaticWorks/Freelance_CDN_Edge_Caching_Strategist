@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | EdgeFlux Edge Strategy</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,5 95,25 95,75 50,95 5,75 5,25%22 fill=%22%232563EB%22/><path d=%22M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .service-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-card {
+            padding: 2rem;
+            border-left: 4px solid var(--primary);
+            background: var(--card);
+            border-radius: 0 16px 16px 0;
+            margin-bottom: 2rem;
+        }
+
+        .step-number {
+            font-family: 'DM Mono', monospace;
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                        <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                            stroke-width="5" stroke-linecap="round" />
+                    </svg>
+                    EdgeFlux
+                </a>
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home 1</a></li>
+                            <li><a href="home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html" class="active" style="color: var(--primary);">Services</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="results.html">Results</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <button class="btn-icon" id="theme-toggle" title="Toggle Theme">🌙</button>
+                    <button class="btn-icon" id="rtl-toggle" title="Toggle RTL">⇄</button>
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <button class="btn-icon mobile-toggle" id="menu-toggle">☰</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                    <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                        stroke-width="5" stroke-linecap="round" />
+                </svg>
+                EdgeFlux
+            </a>
+            <button class="btn-icon" id="close-menu" style="background:none; border:none; font-size: 1.5rem; color: var(--text);">✕</button>
+        </div>
+        <div class="mobile-nav-content">
+            <ul class="mobile-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="mobile-nav-footer">
+            <div class="mobile-controls">
+                <button class="btn-icon" id="theme-toggle-mob" title="Toggle Theme">🌙</button>
+                <button class="btn-icon" id="rtl-toggle-mob" title="Toggle RTL">⇄</button>
+            </div>
+            <a href="login.html" class="btn btn-primary" style="justify-content: center; width: 100%;">Login</a>
+        </div>
+    </div>
+
+    <!-- 1. Hero Section (Matched with About) -->
+    <section class="hero" style="min-height: 60vh; background-color: #2563EB; color: white; text-align: center;">
+        <div class="container">
+            <div class="fade-in" style="max-width: 800px; margin: 0 auto;">
+                <h1 style="color: white; font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem;">Strategic Edge
+                    <br>Consulting.
+                </h1>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: 3rem;">We architect
+                    high-performance CDN solutions that scale with your users, ensuring sub-second delivery anywhere on
+                    Earth.</p>
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="contact.html" class="btn" style="background: white; color: #2563EB;">Request a Quote</a>
+                    <a href="#services-grid" class="btn btn-outline" style="border-color: white; color: white;">Explore
+                        Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Core Services Section -->
+    <section id="services-grid">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                <h2 class="fade-in">Technical Capabilities</h2>
+            </div>
+            <div class="grid-cards" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/service1.jpg" alt="Multi-CDN" class="service-img">
+                    <h3>Multi-CDN Design</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Orchestrate traffic across
+                        multiple vendors to eliminate single points of failure.</p>
+                </div>
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/service2.jpg
+                    " alt="TTL Tuning" class="service-img">
+                    <h3>TTL Logic Tuning</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Maximize cache hit ratios
+                        with granular control over content expiration.</p>
+                </div>
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/service3.jpg" alt="Origin Shield" class="service-img">
+                    <h3>Origin Shielding</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Protect your origin from
+                        traffic spikes with a dedicated shielding layer.</p>
+                </div>
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/service4.jpg" alt="Edge Insights" class="service-img">
+                    <h3>Edge Insights</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Real-time visibility into
+                        traffic patterns and cache performance.</p>
+                </div>
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/service5.jpg" alt="Performance Audit" class="service-img">
+                    <h3>Performance Audit</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Comprehensive analysis of
+                        your current infrastructure and latency gaps.</p>
+                </div>
+                <div class="card fade-in" style="text-align: center;">
+                    <img src="assets/images/service6.jpg" alt="WAF Config" class="service-img">
+                    <h3>WAF Configuration</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Security at the edge with
+                        custom rules for DDoS and bot protection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Our Workflow Section (New) -->
+    <section style="background: var(--card);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="fade-in">The EdgeFlux Workflow</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="step-card fade-in">
+                    <span class="step-number">STEP 01</span>
+                    <h4>Deep Audit</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted);">We analyze your existing traffic patterns, cache
+                        hit ratios, and origin load to find immediate wins.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <span class="step-number">STEP 02</span>
+                    <h4>Strategy Design</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted);">We architect a custom Multi-CDN or hybrid
+                        solution tailored to your specific user distribution.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <span class="step-number">STEP 03</span>
+                    <h4>Execution & Go-Live</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted);">We handle the configuration, DNS migration, and
+                        rigorous testing before the traffic shift.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Advanced Security Section (New) -->
+    <section style="background: var(--secondary); color: white;">
+        <div class="container">
+            <div class="feature-grid fade-in">
+                <div class="feature-text">
+                    <span class="badge" style="background: var(--primary); color: white; border: none;">Enterprise
+                        Grade</span>
+                    <h2 style="color: white;">Advanced Edge <br><span style="color: var(--primary);">Security.</span>
+                    </h2>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Performance is nothing without
+                        protection. We integrate deep security into every caching layer.</p>
+                    <ul style="list-style: none; display: grid; gap: 1rem;">
+                        <li style="display: flex; gap: 1rem; align-items: center;">
+                            <span style="color: var(--primary);">✔</span> Bot Mitigation at the Edge
+                        </li>
+                        <li style="display: flex; gap: 1rem; align-items: center;">
+                            <span style="color: var(--primary);">✔</span> Layer 7 DDoS Protection
+                        </li>
+                        <li style="display: flex; gap: 1rem; align-items: center;">
+                            <span style="color: var(--primary);">✔</span> Custom WAF Rule Sets
+                        </li>
+                    </ul>
+                </div>
+                <div class="feature-img">
+                    <img src="assets/images/security.jpg" alt="Security Visualization">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Industries We Serve (New) -->
+    <section>
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                <h2 class="fade-in">Sectors We Optimize</h2>
+            </div>
+            <div class="grid-cards">
+                <div class="card fade-in" style="text-align: center; background: transparent;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🛍️</div>
+                    <h3>E-Commerce</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Converting visitors into buyers with instant page
+                        loads and checkout stability.</p>
+                </div>
+                <div class="card fade-in" style="text-align: center; background: transparent;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎮</div>
+                    <h3>Gaming</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Reducing jitter and ping for real-time
+                        multiplayer experiences globally.</p>
+                </div>
+                <div class="card fade-in" style="text-align: center; background: transparent;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📺</div>
+                    <h3>Streaming</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Eliminating buffering for 4K video delivery at
+                        massive concurrent scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                            <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                                stroke-width="5" stroke-linecap="round" />
+                        </svg>
+                        EdgeFlux
+                    </a>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Accelerate the Edge. Eliminate Latency. Own the Cache.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">𝕏</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">gh</a>
+                        <a href="#" class="social-icon">rss</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">CDN Architecture</a></li>
+                        <li><a href="#">TTL Optimization</a></li>
+                        <li><a href="#">Origin Shield</a></li>
+                        <li><a href="#">Edge Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="results.html">Results</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Updated</h4>
+                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get edge caching tips delivered to
+                        your inbox.</p>
+                    <form style="display: flex; gap: 0.5rem;">
+                        <input type="email" placeholder="email@example.com"
+                            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; flex: 1; color: white;">
+                        <button class="btn btn-primary">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.8rem; opacity: 0.6;">
+                <p>© 2026 EdgeFlux · All rights reserved.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top">↑</button>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

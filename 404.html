@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | EdgeFlux</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,5 95,25 95,75 50,95 5,75 5,25%22 fill=%22%232563EB%22/><path d=%22M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: var(--bg);
+        }
+        .error-container { position: relative; z-index: 10; }
+        .error-code {
+            font-size: 15rem;
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 20px 30px rgba(37, 99, 235, 0.2));
+        }
+        .particles {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 10s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); }
+            100% { transform: translateY(-100px) scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="error-container fade-in">
+        <div class="error-code">404</div>
+        <h1 style="margin-bottom: 1rem;">Edge Cache Miss.</h1>
+        <p style="color: var(--muted); font-size: 1.2rem; margin-bottom: 3rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+            The page you're looking for has been purged or never existed. Let's get you back to the origin.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1rem;">
+            <a href="index.html" class="btn btn-primary">Go Home</a>
+            <a href="contact.html" class="btn btn-outline">Report Issue</a>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Generate particles
+        const container = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            p.style.animationDelay = (Math.random() * 5) + 's';
+            container.appendChild(p);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | EdgeFlux Admin</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,5 95,25 95,75 50,95 5,75 5,25%22 fill=%22%232563EB%22/><path d=%22M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            background: var(--bg);
+            display: flex;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 200px;
+            background: var(--secondary);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, width 0.3s ease;
+            z-index: 1001;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .sidebar-header {
+            padding: 1.25rem;
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .sidebar-menu {
+            flex: 1;
+            padding: 0.75rem;
+            overflow-y: auto;
+        }
+
+        .menu-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.4;
+            margin: 1.25rem 0 0.5rem 0.75rem;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.7rem 0.85rem;
+            border-radius: 8px;
+            margin-bottom: 0.2rem;
+            opacity: 0.7;
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .menu-item.active {
+            background: rgba(37, 99, 235, 0.15);
+            font-weight: 600;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .top-bar {
+            height: 60px;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            z-index: 1000;
+            position: relative;
+        }
+
+        #dash-sidebar-toggle {
+            display: none;
+        }
+
+        .btn-icon {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-icon:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .dashboard-content {
+            padding: 1.5rem;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+            padding-top: 3rem;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 1.25rem;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .metric-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .metric-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0.4rem 0;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 1.25rem;
+            border-radius: 12px;
+            min-height: 250px;
+        }
+
+        .table-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .dash-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .dash-table th,
+        .dash-table td {
+            padding: 0.8rem 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+        }
+
+        .dash-table th {
+            background: rgba(0, 0, 0, 0.02);
+            font-weight: 700;
+            color: var(--muted);
+        }
+
+        .top-bar-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+
+        .mobile-search {
+            display: none;
+        }
+
+        /* Desktop search visible on wide viewports; hidden on <=1023px */
+        .desktop-search {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Bell button styling (desktop) */
+        .bell-btn {
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .bell-btn .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            font-size: 0.6rem;
+            padding: 2px 5px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        /* hide close button by default (desktop) - shown only on small screens via media query */
+        .close-sidebar-btn {
+            display: none;
+        }
+
+        /* Right-side actions container: anchor to visual right (desktop and RTL) */
+        .top-bar-right {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 1002;
+        }
+
+        @media (max-width: 1023px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100%;
+                width: 100%;
+                transition: right 0.28s ease;
+            }
+
+            /* left-align logo inside sidebar on small/fullscreen menus */
+            .sidebar .sidebar-header {
+                justify-content: flex-start;
+                padding-left: 1rem;
+            }
+
+            .sidebar.open {
+                right: 0;
+            }
+
+            .close-sidebar-btn {
+                display: none;
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                width: 38px;
+                height: 38px;
+                align-items: center;
+                justify-content: center;
+                background: var(--bg);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                color: var(--text);
+                cursor: pointer;
+                z-index: 1003;
+            }
+
+            .sidebar.open .close-sidebar-btn {
+                display: inline-flex;
+            }
+
+            .sidebar-controls-mobile {
+                display: flex !important;
+                flex-direction: column;
+                gap: 0rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                margin-top: 1rem;
+            }
+
+            #dash-sidebar-toggle {
+                display: flex !important;
+            }
+
+            .top-bar {
+                height: 60px;
+                padding: 0 1rem;
+                flex-wrap: nowrap;
+            }
+
+            .top-bar>div:first-child {
+                flex: 1;
+                justify-content: flex-start;
+            }
+
+            .mobile-logo {
+                display: flex !important;
+            }
+
+            .desktop-search {
+                display: none !important;
+            }
+
+            .mobile-search {
+                display: flex !important;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .top-bar-controls {
+                display: none !important;
+            }
+
+            .metric-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .chart-row {
+                grid-template-columns: 1fr;
+            }
+
+            .table-box {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .dash-table {
+                min-width: 600px;
+            }
+
+            .dashboard-content {
+                padding-top: 1rem;
+            }
+
+            .content-section {
+                padding-top: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                    <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                        stroke-width="5" stroke-linecap="round" />
+                </svg>
+                <span>EdgeFlux</span>
+            </a>
+            <button class="close-sidebar-btn" aria-label="Close menu">✕</button>
+        </div>
+        <div class="sidebar-menu">
+            <div class="menu-label">Overview</div>
+            <a href="#" class="menu-item active" data-target="dashboard">📊 <span>Dashboard</span></a>
+            <a href="#" class="menu-item" data-target="analytics">📈 <span>Analytics</span></a>
+            <a href="#" class="menu-item" data-target="reports">📄 <span>Reports</span></a>
+
+            <div class="menu-label">Cache Management</div>
+            <a href="#" class="menu-item" data-target="edge-rules">⚙️ <span>Edge Rules</span></a>
+            <a href="#" class="menu-item" data-target="purge">⚡ <span>Purge Center</span></a>
+            <a href="#" class="menu-item" data-target="pop">🌐 <span>POP Config</span></a>
+
+            <div class="menu-label">Account</div>
+            <a href="#" class="menu-item" data-target="settings">🛠️ <span>Settings</span></a>
+            <a href="index.html" class="menu-item" style="color: var(--danger);">🚪 <span>Logout</span></a>
+        </div>
+
+        <!-- Sidebar User Profile (Desktop & Mobile) -->
+        <div class="sidebar-user"
+            style="padding: 1.25rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div
+                    style="width: 35px; height: 35px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 0.8rem; flex-shrink: 0;">
+                    JD</div>
+                <div style="overflow: hidden;">
+                    <div
+                        style="font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        John Doe</div>
+                    <div style="font-size: 0.7rem; opacity: 0.5;">Administrator</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-controls-mobile" style="display: none;">
+            <div class="menu-label">Interface Options</div>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; padding: 0.75rem 1.25rem;">
+                <div style="display: flex; gap: 0.75rem;">
+                    <button class="btn-icon" id="theme-toggle-mob"
+                        style="background: rgba(255,255,255,0.05); border: none; color: white; padding: 0.5rem; border-radius: 8px; flex: 1; font-size: 0.8rem; height: 40px; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">🌙</button>
+                    <button class="btn-icon" id="rtl-toggle-mob"
+                        style="background: rgba(255,255,255,0.05); border: none; color: white; padding: 0.5rem; border-radius: 8px; flex: 1; font-size: 0.8rem; height: 40px; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">⇄</button>
+                </div>
+
+            </div>
+        </div>
+    </aside>
+
+    <div class="main-container">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div style="display: flex; align-items: center; gap: 1.5rem; flex-grow: 1; min-width: 0;">
+                <!-- Mobile Logo -->
+                <a href="index.html" class="logo mobile-logo" style="display: none;">
+                    <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                        <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                            stroke-width="5" stroke-linecap="round" />
+                    </svg>
+                    <span style="font-size: 1.1rem;">EdgeFlux</span>
+                </a>
+                <div class="search-bell-container desktop-search">
+                    <div class="search-box" style="position: relative; flex: 1; min-width: 200px;">
+                        <input type="text" placeholder="Search resources..."
+                            style="background: var(--bg); border: 1px solid var(--border); padding: 0.5rem 1rem 0.5rem 2.5rem; border-radius: 8px; color: var(--text); width: 100%;">
+                        <span
+                            style="position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); opacity: 0.5;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="top-bar-right">
+                <div class="top-bar-controls">
+                    <button class="btn-icon bell-btn" id="notifications" title="Notifications"
+                        style="position: relative;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="badge"
+                            style="position: absolute; top: -6px; right: -6px; background: var(--danger); color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 10px; font-weight:700;">3</span>
+                    </button>
+                    <button class="btn-icon" id="rtl-toggle" title="Toggle RTL">⇄</button>
+                    <button class="btn-icon" id="theme-toggle" title="Toggle Theme">🌙</button>
+                </div>
+                <button id="dash-sidebar-toggle" class="btn-icon"
+                    style="background:none; font-size: 1.2rem; color: var(--text); padding: 0.4rem;">☰</button>
+            </div>
+        </header>
+
+        <!-- Mobile-only Search Box (outside header) -->
+        <div class="search-bell-container mobile-search"
+            style="display: none; padding: 1rem 1.5rem; background: var(--card); border-bottom: 1px solid var(--border);">
+            <div class="search-box" style="position: relative; flex: 1;">
+                <input type="text" placeholder="Search resources..."
+                    style="background: var(--bg); border: 1px solid var(--border); padding: 0.5rem 1rem 0.5rem 2.5rem; border-radius: 8px; color: var(--text); width: 100%;">
+                <span style="position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); opacity: 0.5;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+            </div>
+            <!-- Notification Bell -->
+            <div style="position: relative; cursor: pointer; display: flex; align-items: center; flex-shrink: 0;"
+                title="Notifications">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span
+                    style="position: absolute; top: -5px; right: -5px; background: var(--danger); color: white; font-size: 0.6rem; padding: 2px 5px; border-radius: 10px; font-weight: 700;">3</span>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <main class="dashboard-content fade-in">
+            <!-- Dashboard View -->
+            <div id="dashboard" class="content-section active">
+                <section class="hero-dash"
+                    style="background: var(--primary); color: white; padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                    <h1>Welcome back, John!</h1>
+                    <p style="opacity: 0.8;">Your global network is performing 12% better than last week.</p>
+                </section>
+
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <p style="font-size: 0.8rem; color: var(--muted);">Cache Hit Ratio</p>
+                        <div class="value">98.4%</div>
+                        <div class="trend up">▲ 2.4% <span style="color: var(--muted);">vs last week</span></div>
+                    </div>
+                    <div class="metric-card">
+                        <p style="font-size: 0.8rem; color: var(--muted);">Avg Latency</p>
+                        <div class="value">16ms</div>
+                        <div class="trend up">▼ 4ms <span style="color: var(--muted);">vs last week</span></div>
+                    </div>
+                    <div class="metric-card">
+                        <p style="font-size: 0.8rem; color: var(--muted);">Active Rules</p>
+                        <div class="value">47</div>
+                        <div class="trend" style="color: var(--muted);">No change</div>
+                    </div>
+                    <div class="metric-card">
+                        <p style="font-size: 0.8rem; color: var(--muted);">Bandwidth Saved</p>
+                        <div class="value">2.4 TB</div>
+                        <div class="trend up">▲ 12% <span style="color: var(--muted);">vs last week</span></div>
+                    </div>
+                </div>
+
+                <div class="chart-row">
+                    <div class="chart-box">
+                        <h4>Cache Hits by Day</h4>
+                        <div class="chart-placeholder"
+                            style="height: 180px; display: flex; align-items: flex-end; gap: 12px; margin-top: 1rem;">
+                            <div class="chart-bar"
+                                style="height: 40%; background: var(--primary); flex: 1; border-radius: 4px 4px 0 0;">
+                            </div>
+                            <div class="chart-bar"
+                                style="height: 60%; background: var(--primary); flex: 1; border-radius: 4px 4px 0 0;">
+                            </div>
+                            <div class="chart-bar"
+                                style="height: 85%; background: var(--primary); flex: 1; border-radius: 4px 4px 0 0;">
+                            </div>
+                            <div class="chart-bar"
+                                style="height: 70%; background: var(--primary); flex: 1; border-radius: 4px 4px 0 0;">
+                            </div>
+                            <div class="chart-bar"
+                                style="height: 90%; background: var(--primary); flex: 1; border-radius: 4px 4px 0 0;">
+                            </div>
+                            <div class="chart-bar"
+                                style="height: 55%; background: var(--primary); flex: 1; border-radius: 4px 4px 0 0;">
+                            </div>
+                            <div class="chart-bar"
+                                style="height: 75%; background: var(--primary); flex: 1; border-radius: 4px 4px 0 0;">
+                            </div>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; margin-top: 1rem; font-size: 0.7rem; opacity: 0.5;">
+                            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                        </div>
+                    </div>
+                    <div class="chart-box" style="text-align: center;">
+                        <h4>Traffic by Region</h4>
+                        <div
+                            style="margin: 1.5rem auto; width: 120px; height: 120px; border: 20px solid var(--primary); border-left-color: var(--accent); border-bottom-color: var(--secondary); border-radius: 50%;">
+                        </div>
+                        <div style="text-align: left; font-size: 0.75rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+                                <span>🇺🇸 US East</span><span>45%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+                                <span>🇪🇺 EU West</span><span>30%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;"><span>🇯🇵 AS
+                                    North</span><span>25%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics View -->
+            <div id="analytics" class="content-section">
+                <h2 style="margin-bottom: 2rem;">Real-time Analytics</h2>
+                <div class="chart-box" style="margin-bottom: 2rem; min-height: 400px;">
+                    <div
+                        style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <div>
+                            <h4 style="margin: 0;">Global Traffic Flow</h4>
+                            <p style="font-size: 0.8rem; color: var(--muted);">Live requests per second across all nodes
+                            </p>
+                        </div>
+                        <div class="status-badge status-success">Live Updates Active</div>
+                    </div>
+                    <div
+                        style="height: 250px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted);">
+                        [ Interactive Map Visualization Placeholder ]
+                    </div>
+                </div>
+                <div class="grid-cards" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="chart-box">
+                        <h4>Top Referrers</h4>
+                        <table class="dash-table" style="margin-top: 1rem;">
+                            <tr>
+                                <td>google.com</td>
+                                <td>42.5k</td>
+                            </tr>
+                            <tr>
+                                <td>twitter.com</td>
+                                <td>18.2k</td>
+                            </tr>
+                            <tr>
+                                <td>direct</td>
+                                <td>12.1k</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="chart-box">
+                        <h4>Error Rates</h4>
+                        <div class="value" style="color: var(--danger);">0.04%</div>
+                        <p style="font-size: 0.8rem; color: var(--muted);">Average 5xx errors in last 24h</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports View -->
+            <div id="reports" class="content-section">
+                <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2>Executive Reports</h2>
+                    <button class="btn btn-primary">+ Generate New Report</button>
+                </div>
+                <div class="table-box">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Report Name</th>
+                                <th>Period</th>
+                                <th>Status</th>
+                                <th>Download</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Q2 Performance Audit</td>
+                                <td>Apr - Jun 2026</td>
+                                <td><span class="status-badge status-success">Ready</span></td>
+                                <td><a href="#" style="color:var(--primary);">PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>Latency Benchmark</td>
+                                <td>May 2026</td>
+                                <td><span class="status-badge status-success">Ready</span></td>
+                                <td><a href="#" style="color:var(--primary);">CSV</a></td>
+                            </tr>
+                            <tr>
+                                <td>Security Compliance</td>
+                                <td>2026 Annual</td>
+                                <td><span class="status-badge status-warning">Draft</span></td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Edge Rules View -->
+            <div id="edge-rules" class="content-section">
+                <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2>Edge Rules Engine</h2>
+                    <button class="btn btn-primary">+ Create Rule</button>
+                </div>
+                <div class="table-box">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>Rule Description</th>
+                                <th>Action</th>
+                                <th>Active</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>100</td>
+                                <td>Redirect /old-blog/* to /blog/</td>
+                                <td>301 Redirect</td>
+                                <td><input type="checkbox" checked></td>
+                            </tr>
+                            <tr>
+                                <td>200</td>
+                                <td>Cache Headers for .webp</td>
+                                <td>Force Cache 30d</td>
+                                <td><input type="checkbox" checked></td>
+                            </tr>
+                            <tr>
+                                <td>300</td>
+                                <td>Bypass Cache for /api/admin</td>
+                                <td>Pass-through</td>
+                                <td><input type="checkbox" checked></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Purge Center View -->
+            <div id="purge" class="content-section">
+                <h2>Purge Center</h2>
+                <div class="chart-box" style="margin: 2rem 0;">
+                    <h4>Instant Purge</h4>
+                    <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem;">Purge content globally in
+                        under 200ms.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="text" placeholder="URL or Surrogate Tag (e.g., /static/logo.png)"
+                            style="flex: 1; padding: 0.8rem; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 8px;">
+                        <button class="btn btn-primary">Purge Everywhere</button>
+                    </div>
+                </div>
+                <h4>Recent History</h4>
+                <div class="table-box" style="margin-top: 1rem;">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Target</th>
+                                <th>Method</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>/images/*</td>
+                                <td>Wildcard</td>
+                                <td>2m ago</td>
+                                <td><span class="status-badge status-success">Success</span></td>
+                            </tr>
+                            <tr>
+                                <td>tag:v1-assets</td>
+                                <td>Tag Purge</td>
+                                <td>45m ago</td>
+                                <td><span class="status-badge status-success">Success</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- POP Config View -->
+            <div id="pop" class="content-section">
+                <h2>Edge Network Status</h2>
+                <div class="metric-grid" style="margin-top: 2rem;">
+                    <div class="metric-card">
+                        <div style="display:flex; justify-content: space-between;"><span>North America</span> <span
+                                style="color: var(--success);">●</span></div>
+                        <div class="value" style="font-size: 1.2rem;">24 POPs Online</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="display:flex; justify-content: space-between;"><span>Europe</span> <span
+                                style="color: var(--success);">●</span></div>
+                        <div class="value" style="font-size: 1.2rem;">18 POPs Online</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="display:flex; justify-content: space-between;"><span>Asia Pacific</span> <span
+                                style="color: var(--warning);">●</span></div>
+                        <div class="value" style="font-size: 1.2rem;">12 POPs (1 Degradation)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="display:flex; justify-content: space-between;"><span>South America</span> <span
+                                style="color: var(--success);">●</span></div>
+                        <div class="value" style="font-size: 1.2rem;">6 POPs Online</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings View -->
+            <div id="settings" class="content-section">
+                <h2>Platform Settings</h2>
+                <div class="chart-box" style="margin-top: 2rem; max-width: 600px;">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Organization
+                            Name</label>
+                        <input type="text" value="EdgeFlux Tech"
+                            style="width: 100%; padding: 0.8rem; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 8px;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Default TTL</label>
+                        <select
+                            style="width: 100%; padding: 0.8rem; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 8px;">
+                            <option>3600 seconds (1 hour)</option>
+                            <option>86400 seconds (1 day)</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary">Save Configuration</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

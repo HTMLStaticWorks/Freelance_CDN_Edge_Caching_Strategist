@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | EdgeFlux Edge Strategy</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,5 95,25 95,75 50,95 5,75 5,25%22 fill=%22%232563EB%22/><path d=%22M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px; width: 26px;
+            left: 4px; bottom: 3px;
+            background-color: var(--primary);
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider:before { transform: translateX(26px); }
+
+        .price-yearly { display: none; }
+        
+        .price-card.featured {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--primary);
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        .price-card.featured h2 { color: var(--accent); }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB"/>
+                        <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                    </svg>
+                    EdgeFlux
+                </a>
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home 1</a></li>
+                            <li><a href="home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="results.html">Results</a></li>
+                    <li><a href="pricing.html" class="active" style="color: var(--primary);">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <button class="btn-icon" id="theme-toggle" title="Toggle Theme">🌙</button>
+                    <button class="btn-icon" id="rtl-toggle" title="Toggle RTL">⇄</button>
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <button class="btn-icon mobile-toggle" id="menu-toggle">☰</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                    <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                        stroke-width="5" stroke-linecap="round" />
+                </svg>
+                EdgeFlux
+            </a>
+            <button class="btn-icon" id="close-menu" style="background:none; border:none; font-size: 1.5rem; color: var(--text);">✕</button>
+        </div>
+        <div class="mobile-nav-content">
+            <ul class="mobile-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="mobile-nav-footer">
+            <div class="mobile-controls">
+                <button class="btn-icon" id="theme-toggle-mob" title="Toggle Theme">🌙</button>
+                <button class="btn-icon" id="rtl-toggle-mob" title="Toggle RTL">⇄</button>
+            </div>
+            <a href="login.html" class="btn btn-primary" style="justify-content: center; width: 100%;">Login</a>
+        </div>
+    </div>
+
+    <section class="hero" style="min-height: 40vh; padding-top: 150px; text-align: center;">
+        <div class="container">
+            <h1 class="fade-in">Scale your Edge <br><span style="color: var(--primary);">Efficiently.</span></h1>
+            <p class="fade-in" style="max-width: 600px; margin: 1rem auto;">Transparent pricing for high-performance teams. No hidden egress fees.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="pricing-toggle fade-in">
+                <span style="font-weight: 600;">Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="pricing-checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span style="font-weight: 600;">Yearly <small style="color: var(--success);">(Save 20%)</small></span>
+            </div>
+
+            <div class="grid-cards">
+                <!-- Starter -->
+                <div class="card price-card fade-in">
+                    <h4>Starter</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin: 0.5rem 0 1.5rem;">For small apps & sites.</p>
+                    <h2 class="price-monthly">$49<small style="font-size: 1rem; opacity: 0.5;">/mo</small></h2>
+                    <h2 class="price-yearly">$39<small style="font-size: 1rem; opacity: 0.5;">/mo</small></h2>
+                    <ul style="list-style: none; margin: 2rem 0; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.8rem;">✓ 1TB Bandwidth</li>
+                        <li style="margin-bottom: 0.8rem;">✓ 50 Cache Rules</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Global Purge (Standard)</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Community Support</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-outline" style="width: 100%; justify-content: center;">Get Started</a>
+                </div>
+                <!-- Pro -->
+                <div class="card price-card featured fade-in">
+                    <div class="badge" style="background: var(--primary); color: white; margin-bottom: 1rem;">Most Popular</div>
+                    <h4>Professional</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin: 0.5rem 0 1.5rem;">For high-growth SaaS.</p>
+                    <h2 class="price-monthly">$199<small style="font-size: 1rem; opacity: 0.5;">/mo</small></h2>
+                    <h2 class="price-yearly">$159<small style="font-size: 1rem; opacity: 0.5;">/mo</small></h2>
+                    <ul style="list-style: none; margin: 2rem 0; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.8rem;">✓ 10TB Bandwidth</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Unlimited Rules</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Surrogate Key Purge</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Priority 24/7 Support</li>
+                        <li style="margin-bottom: 0.8rem;">✓ WAF at the Edge</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Start Pro Trial</a>
+                </div>
+                <!-- Enterprise -->
+                <div class="card price-card fade-in">
+                    <h4>Enterprise</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin: 0.5rem 0 1.5rem;">For global scale.</p>
+                    <h2 style="margin-bottom: 0;">Custom</h2>
+                    <p style="font-size: 0.8rem; margin-bottom: 1.5rem; opacity: 0.5;">Tailored for your needs</p>
+                    <ul style="list-style: none; margin: 2rem 0; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.8rem;">✓ PB Scale Bandwidth</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Dedicated SRE</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Custom POP Selection</li>
+                        <li style="margin-bottom: 0.8rem;">✓ White-glove Onboarding</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline" style="width: 100%; justify-content: center;">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--card);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 4rem;">Detailed Comparison</h2>
+            <div style="overflow-x: auto;">
+                <table class="comparison-table" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left; padding: 1.5rem;">Feature</th>
+                            <th>Starter</th>
+                            <th>Professional</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: left; padding: 1rem; border: 1px solid var(--border);">Global Purge</td>
+                            <td style="text-align: center; border: 1px solid var(--border);">Standard</td>
+                            <td style="text-align: center; border: 1px solid var(--border); font-weight: 700; color: var(--primary);">Instant</td>
+                            <td style="text-align: center; border: 1px solid var(--border); font-weight: 700; color: var(--primary);">Instant</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; padding: 1rem; border: 1px solid var(--border);">Edge Functions</td>
+                            <td style="text-align: center; border: 1px solid var(--border);">-</td>
+                            <td style="text-align: center; border: 1px solid var(--border);"><span style="color: var(--success);">✓</span></td>
+                            <td style="text-align: center; border: 1px solid var(--border);"><span style="color: var(--success);">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; padding: 1rem; border: 1px solid var(--border);">Multi-CDN</td>
+                            <td style="text-align: center; border: 1px solid var(--border);">-</td>
+                            <td style="text-align: center; border: 1px solid var(--border);">-</td>
+                            <td style="text-align: center; border: 1px solid var(--border);"><span style="color: var(--success);">✓</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 4rem;">Pricing FAQ</h2>
+            <div class="faq-grid">
+                <div class="fade-in">
+                    <h4 style="margin-bottom: 1rem;">Are there setup fees?</h4>
+                    <p style="color: var(--muted); font-size: 0.9rem;">No, there are no hidden setup fees for any of our standard plans. Enterprise custom POP setups may involve a one-time configuration fee.</p>
+                </div>
+                <div class="fade-in">
+                    <h4 style="margin-bottom: 1rem;">What happens if I exceed my bandwidth?</h4>
+                    <p style="color: var(--muted); font-size: 0.9rem;">We don't cut off your traffic. You'll be billed at a flat rate of $0.05 per additional GB on Starter and Pro plans.</p>
+                </div>
+                <div class="fade-in">
+                    <h4 style="margin-bottom: 1rem;">Can I cancel anytime?</h4>
+                    <p style="color: var(--muted); font-size: 0.9rem;">Yes, you can cancel your subscription at any time. You will retain access to your plan until the end of the current billing cycle.</p>
+                </div>
+                <div class="fade-in">
+                    <h4 style="margin-bottom: 1rem;">Do you offer non-profit discounts?</h4>
+                    <p style="color: var(--muted); font-size: 0.9rem;">Yes! We offer a 50% discount for registered non-profit organizations. Contact us to learn more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                            <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                                stroke-width="5" stroke-linecap="round" />
+                        </svg>
+                        EdgeFlux
+                    </a>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Accelerate the Edge. Eliminate Latency. Own the Cache.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">𝕏</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">gh</a>
+                        <a href="#" class="social-icon">rss</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">CDN Architecture</a></li>
+                        <li><a href="#">TTL Optimization</a></li>
+                        <li><a href="#">Origin Shield</a></li>
+                        <li><a href="#">Edge Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="results.html">Results</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Updated</h4>
+                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get edge caching tips delivered to
+                        your inbox.</p>
+                    <form style="display: flex; gap: 0.5rem;">
+                        <input type="email" placeholder="email@example.com"
+                            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; flex: 1; color: white;">
+                        <button class="btn btn-primary">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.8rem; opacity: 0.6;">
+                <p>© 2026 EdgeFlux · All rights reserved.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top">↑</button>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

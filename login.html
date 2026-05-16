@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | EdgeFlux</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,5 95,25 95,75 50,95 5,75 5,25%22 fill=%22%232563EB%22/><path d=%22M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.05), transparent), var(--bg);
+            padding: 4rem 2rem;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 440px;
+            padding: 3rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            margin: 2rem 0;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .social-btn {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--bg);
+            color: var(--text);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary);
+            background: var(--card);
+        }
+
+        .social-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .password-group {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .password-toggle:hover {
+            color: var(--primary);
+        }
+
+        .auth-controls {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        [dir="rtl"] .auth-controls {
+            right: auto;
+            left: 2rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .logo:hover {
+            text-decoration: none;
+        }
+
+        .auth-extra {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 480px) {
+            .auth-extra {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .auth-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-controls">
+        <button class="btn-icon" id="theme-toggle">🌙</button>
+        <button class="btn-icon" id="rtl-toggle">⇄</button>
+    </div>
+
+    <div class="auth-card fade-in">
+        <div class="auth-header">
+            <a href="index.html" class="logo" style="justify-content: center; margin-bottom: 1rem;">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="#2563EB" />
+                    <path d="M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60" stroke="white"
+                        stroke-width="5" stroke-linecap="round" />
+                </svg>
+                EdgeFlux
+            </a>
+            <h2>Welcome back</h2>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem;">Enter your credentials to access your
+                dashboard.</p>
+        </div>
+
+        <form action="dashboard.html">
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label for="email" style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600;">Email Address</label>
+                <input type="email" id="email" required
+                    style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text);">
+            </div>
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label for="password" style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600;">Password</label>
+                <div class="password-group">
+                    <input type="password" id="password" required
+                        style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text);">
+                    <button type="button" class="password-toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="auth-extra">
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="checkbox"> Remember me
+                </label>
+                <a href="#" style="color: var(--primary); font-weight: 600;">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem;">Sign In</button>
+        </form>
+
+        <div class="divider">Or continue with</div>
+
+        <div class="social-auth">
+            <button class="social-btn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c3.11 0 5.72-1.03 7.63-2.79l-3.57-2.77c-.99.66-2.23 1.06-4.06 1.06-3.12 0-5.76-2.11-6.7-4.94H1.54v2.87A11.996 11.996 0 0 0 12 23z" fill="#34A853"/><path d="M5.3 13.56A7.16 7.16 0 0 1 5 12c0-.54.09-1.07.26-1.56V7.57H1.54A11.988 11.988 0 0 0 0 12c0 1.61.32 3.15.9 4.56l4.4-3.44z" fill="#FBBC05"/><path d="M12 5.38c1.69 0 3.21.58 4.41 1.72l3.31-3.31C17.71 1.74 15.1 0 12 0 7.31 0 3.29 2.68 1.32 6.61l4.4 3.44c.94-2.83 3.58-4.94 6.7-4.94z" fill="#EA4335"/></svg>
+                Google
+            </button>
+            <button class="social-btn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+            </button>
+            <button class="social-btn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05 1.72-3.2 1.72-1.12 0-1.48-.68-2.76-.68-1.28 0-1.68.66-2.75.68-1.07.02-2.25-.85-3.25-1.85-2.02-2.02-3.1-5.12-3.1-7.85 0-4.38 2.85-6.7 5.58-6.7 1.45 0 2.8.98 3.68.98.88 0 2.52-1.22 4.25-1.02 1.75.2 3.12 1 4.12 2.38-3.48 2.05-2.92 6.55.6 7.98-.75 1.85-1.95 3.52-2.97 4.34zM12.05 5.5c-.05-1.88 1.55-3.55 3.38-3.62.18 1.95-1.6 3.75-3.38 3.62z"/></svg>
+                Apple
+            </button>
+        </div>
+
+        <p style="text-align: center; font-size: 0.9rem; margin-top: 2rem; color: var(--muted); white-space: nowrap;">
+            Don't have an account? <a href="register.html" style="color: var(--primary); font-weight: 600;">Sign Up</a>
+        </p>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
