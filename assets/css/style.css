@@ -372,6 +372,18 @@ footer .logo {
     transform: translateY(-2px);
 }
 
+.grid-cards-responsive {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .grid-cards-responsive {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Hero Section */
 .hero {
     min-height: 90vh;
