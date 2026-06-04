@@ -387,6 +387,26 @@ footer .logo {
     transform: translateY(-2px);
 }
 
+/* Replace emoji theme toggle with a small SVG icon for a more professional look
+   The button text (emoji) is hidden via font-size:0; the ::before pseudo-element shows an SVG. */
+#theme-toggle,
+#theme-toggle-mob {
+    font-size: 0; /* hide fallback emoji text */
+    position: relative;
+}
+
+#theme-toggle::before,
+#theme-toggle-mob::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .grid-cards-responsive {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -700,6 +720,26 @@ footer {
     flex-direction: row-reverse;
 }
 
+/* RTL: About page timeline fix */
+[dir="rtl"] .timeline-item {
+    padding-right: 0;
+    padding-left: 3rem;
+}
+[dir="rtl"] .timeline-item:nth-child(even) {
+    margin-left: 0;
+    margin-right: 50%;
+    padding-right: 3rem;
+    padding-left: 0;
+}
+[dir="rtl"] .timeline-dot {
+    right: auto;
+    left: -8px;
+}
+[dir="rtl"] .timeline-item:nth-child(even) .timeline-dot {
+    left: auto;
+    right: -8px;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .nav-links {
@@ -747,6 +787,32 @@ footer {
         grid-template-columns: repeat(2, 1fr) !important;
     }
 
+    /* Services: What Clients Receive — 2 cards per row at tablet */
+    .clients-receive-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Home1: How I Engineer the Edge — 1 card per row on tablet */
+    .home1-tech-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Home2: Recent Consulting Outcomes — 1 card per row on tablet */
+    .home2-outcomes-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* About: My Core Principles — center 3rd card at tablet */
+    .about-principles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+    }
+    .about-principles-grid .card:nth-child(3):last-child {
+        grid-column: 1 / -1;
+        max-width: calc(50% - 1rem);
+        margin: 0 auto;
+    }
+
     .security-feature-grid .feature-text ul {
         justify-items: center;
         padding: 0;
@@ -782,6 +848,27 @@ footer {
     }
 
     .services-capabilities .grid-cards {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Home1: stack hero buttons one per row */
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Home1: How I Engineer the Edge — 1 card per row on mobile */
+    .home1-tech-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Home2: Recent Consulting Outcomes — 1 card per row on mobile */
+    .home2-outcomes-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Services: What Clients Receive — 1 card per row on mobile */
+    .clients-receive-grid {
         grid-template-columns: 1fr !important;
     }
 }

@@ -51,6 +51,14 @@
             gap: 1.5rem;
         }
 
+        /* ensure internal bento-large content stacks on small screens */
+        .bento-large > div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
         .bento-item {
             background: var(--card);
             border: 1px solid var(--border);
@@ -88,8 +96,58 @@
                 grid-template-columns: 1fr;
             }
 
+           
+
+            /* stack internal two-column layouts inside large bento tiles */
+            .bento-large > div {
+                grid-template-columns: 1fr;
+            }
+
+            /* reduce padding on very small screens for better fit */
+            .bento-item {
+                padding: 1.25rem;
+            }
+
+            /* Center hero buttons on tablet/mobile */
+            .hero .hero-actions {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Ensure feature-grid stacks fully on mobile */
+            .feature-grid {
+                text-align: center;
+            }
+
+            .feature-grid .hero-text {
+                order: 1;
+            }
+
+            .feature-grid .feature-img {
+                order: 2;
+            }
+            /* Force bento tiles to be full-width and stack one-by-one on small phones */
+            .bento-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .bento-grid > .bento-item {
+                grid-column: auto !important;
+                width: 100% !important;
+            }
+
             .bento-large {
-                grid-column: span 1;
+                grid-column: span 1 !important;
+            }
+
+            .bento-large > div {
+                grid-template-columns: 1fr !important;
+            }
+
+            .bento-item {
+                padding: 1rem !important;
             }
         }
     </style>
@@ -174,18 +232,23 @@
         <div class="container">
             <div class="feature-grid fade-in">
                 <div class="hero-text">
-                    <span class="badge" style="background: rgba(37, 99, 235, 0.15); color: var(--primary); font-weight: 700;">Freelance CDN Specialist</span>
+                    <span class="badge"
+                        style="background: rgba(37, 99, 235, 0.15); color: var(--primary); font-weight: 700;">Freelance
+                        CDN Specialist</span>
                     <h1 style="font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 1.5rem;"> Custom Edge
                         <span style="color: var(--primary);">Caching Strategy</span>
                     </h1>
                     <p style="font-size: 1.25rem; color: #fff; margin-bottom: 2.5rem; max-width: 600px; opacity: 0.9;">
-                        I build and configure sophisticated cache-control logic, origin shield topologies, and custom edge rules. Cut egress costs and achieve sub-second global responses without paying for expensive enterprise SRE teams.</p>
+                        I build and configure sophisticated cache-control logic, origin shield topologies, and custom
+                        edge rules. Cut egress costs and achieve sub-second global responses without paying for
+                        expensive enterprise SRE teams.</p>
                     <div class="hero-actions" style="justify-content: flex-start;">
                         <a href="contact.html" class="btn btn-primary">Book a CDN Audit</a>
                     </div>
                 </div>
                 <div class="feature-img" style="border: none; box-shadow: none;">
-                    <img src="assets/images/home2-hero.jpg" alt="Edge Caching Architecture Dashboard" style="border-radius: 32px;">
+                    <img src="assets/images/home2-hero.jpg" alt="Edge Caching Architecture Dashboard"
+                        style="border-radius: 32px;">
                 </div>
             </div>
         </div>
@@ -214,33 +277,35 @@
         <div class="container">
             <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
                 <h2 class="fade-in">Precision Cache Tuning <br>at the Edge.</h2>
-                <p class="fade-in" style="color: var(--muted); font-size: 1.1rem; margin-top: 1rem;">Direct configuration of custom caching parameters and edge rules for modern applications.</p>
+                <p class="fade-in" style="color: var(--muted); font-size: 1.1rem; margin-top: 1rem;">Direct
+                    configuration of custom caching parameters and edge rules for modern applications.</p>
             </div>
             <div class="bento-grid">
                 <div class="bento-item bento-large fade-in">
                     <h3 style="margin-bottom: 1rem;">Instant Global Cache Purging</h3>
-                    <p style="color: var(--muted); margin-bottom: 2rem;">I write custom CDN purging logic that leverages surrogate keys, tags, and path prefixes, allowing your application to invalidate stale assets globally in milliseconds without origin server drag.</p>
-                    <div
-                        style="background: var(--bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
-                        <code
-                            style="color: var(--primary);">curl -X PURGE https://api.edgeflux.io/v1/cache/tags/all</code>
-                    </div>
+                    <p style="color: var(--muted); margin-bottom: 2rem;">I write custom CDN purging logic that leverages
+                        surrogate keys, tags, and path prefixes, allowing your application to invalidate stale assets
+                        globally in milliseconds without origin server drag.</p>
+                    
                 </div>
                 <div class="bento-item fade-in"
                     style="background: linear-gradient(to bottom right, var(--card), rgba(37, 99, 235, 0.1));">
                     <div style="font-size: 2rem; margin-bottom: 1.5rem;">🌍</div>
                     <h4>Anycast Configuration</h4>
-                    <p style="font-size: 0.9rem; color: var(--muted);">Setup smart DNS policies and geolocation-based Anycast routing to direct traffic efficiently.</p>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Setup smart DNS policies and geolocation-based
+                        Anycast routing to direct traffic efficiently.</p>
                 </div>
                 <div class="bento-item fade-in">
                     <h4>Origin Shield Setup</h4>
-                    <p style="font-size: 0.9rem; color: var(--muted);">Reduce backend load by structuring a multi-tier cache hierarchy to intercept request spikes.</p>
+                    <p style="font-size: 0.9rem; color: var(--muted);">Reduce backend load by structuring a multi-tier
+                        cache hierarchy to intercept request spikes.</p>
                 </div>
                 <div class="bento-item bento-large fade-in">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
                         <div>
                             <h3>Cache Metrics Monitoring</h3>
-                            <p style="color: var(--muted);">Set up log streaming from Fastly, Cloudflare, or AWS to monitor cache hit ratios and identify optimization gains in real-time.</p>
+                            <p style="color: var(--muted);">Set up log streaming from Fastly, Cloudflare, or AWS to
+                                monitor cache hit ratios and identify optimization gains in real-time.</p>
                         </div>
                         <div class="dashboard-mock" style="padding: 1rem;">
                             <div class="chart-placeholder" style="height: 100px;">
@@ -266,9 +331,13 @@
                 </div>
                 <div class="feature-text">
                     <span class="badge">Architecture Design</span>
-                    <h2>Multi-CDN Strategy for <br><span style="color: var(--primary);">Ultimate Reliability.</span></h2>
-                    <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; font-weight: 600;">Combine several edge networks to achieve global failover and bypass local outages.</p>
-                    <p style="color: var(--muted); margin-bottom: 2rem;">I design and configure redundant multi-CDN layers that direct user requests dynamically. If one provider experiences a global routing outage, traffic fails over instantly to an alternate healthy edge provider.</p>
+                    <h2>Multi-CDN Strategy for <br><span style="color: var(--primary);">Ultimate Reliability.</span>
+                    </h2>
+                    <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; font-weight: 600;">Combine
+                        several edge networks to achieve global failover and bypass local outages.</p>
+                    <p style="color: var(--muted); margin-bottom: 2rem;">I design and configure redundant multi-CDN
+                        layers that direct user requests dynamically. If one provider experiences a global routing
+                        outage, traffic fails over instantly to an alternate healthy edge provider.</p>
                     <div class="stats-grid" style="grid-template-columns: 1fr 1fr; text-align: left;">
                         <div class="stat-item">
                             <h3>100%</h3>
@@ -291,8 +360,12 @@
                 <div style="flex: 1;">
                     <span class="badge success">Targeted Optimization</span>
                     <h2 style="margin: 1.5rem 0;">Optimized for Your <br>Specific Traffic Profiles.</h2>
-                    <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; font-weight: 600;">Custom caching models tailored to your business model and operational workflow.</p>
-                    <p style="color: var(--muted); margin-bottom: 2rem;">Different applications demand different edge behaviors. I analyze your API response paths, image payloads, and session cookie strategies to design tailored caching rules that respect state changes while accelerating content delivery.</p>
+                    <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; font-weight: 600;">Custom
+                        caching models tailored to your business model and operational workflow.</p>
+                    <p style="color: var(--muted); margin-bottom: 2rem;">Different applications demand different edge
+                        behaviors. I analyze your API response paths, image payloads, and session cookie strategies to
+                        design tailored caching rules that respect state changes while accelerating content delivery.
+                    </p>
                     <div class="home2-solutions-grid"
                         style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                         <div class="card" style="padding: 1.5rem; background: var(--bg);">
@@ -318,7 +391,8 @@
         <div class="container">
             <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
                 <h2 class="fade-in">Measurable Caching Results</h2>
-                <p class="fade-in" style="color: var(--muted); font-size: 1.1rem; margin-top: 1rem;">Typical performance benchmarks achieved after a professional caching optimization sprint.</p>
+                <p class="fade-in" style="color: var(--muted); font-size: 1.1rem; margin-top: 1rem;">Typical performance
+                    benchmarks achieved after a professional caching optimization sprint.</p>
             </div>
             <div class="fade-in"
                 style="overflow-x: auto; background: var(--bg); border-radius: 24px; border: 1px solid var(--border);">
@@ -344,7 +418,8 @@
                         <tr>
                             <td style="padding: 2rem; font-weight: 600;">DDoS & Bot Mitigation</td>
                             <td style="padding: 2rem;">Reactive (Manual)</td>
-                            <td style="padding: 2rem; font-weight: 700; color: var(--success);">Automated (WAF & Rate limits)</td>
+                            <td style="padding: 2rem; font-weight: 700; color: var(--success);">Automated (WAF & Rate
+                                limits)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -358,30 +433,40 @@
             <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
                 <span class="badge">Engagements</span>
                 <h2>Recent Consulting Outcomes</h2>
-                <p style="color: var(--muted); max-width: 600px; margin: 1rem auto 0; font-size: 1.1rem;">Examples of real-world results delivered to engineering teams during CDN optimization sprints.</p>
+                <p style="color: var(--muted); max-width: 600px; margin: 1rem auto 0; font-size: 1.1rem;">Examples of
+                    real-world results delivered to engineering teams during CDN optimization sprints.</p>
             </div>
-            <div class="grid-cards" style="grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+            <div class="grid-cards home2-outcomes-grid" style="grid-template-columns: repeat(3, 1fr); gap: 2rem;">
                 <div class="card fade-in" style="background: var(--card);">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
                         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                     </svg>
                     <h3>SaaS API Acceleration</h3>
-                    <p style="font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem;">Reduced global API P99 latency from 350ms to 25ms by configuring custom edge rules, header normalization, and query parameter sorting policies on Cloudflare Workers.</p>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem;">Reduced global API P99
+                        latency from 350ms to 25ms by configuring custom edge rules, header normalization, and query
+                        parameter sorting policies on Cloudflare Workers.</p>
                 </div>
                 <div class="card fade-in" style="background: var(--card);">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     </svg>
                     <h3>E-commerce Origin Shield</h3>
-                    <p style="font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem;">Designed and deployed a Fastly Origin Shield structure, absorbing 80% of sudden traffic spikes during promotional events and shielding backend database clusters from crashing.</p>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem;">Designed and deployed a
+                        Fastly Origin Shield structure, absorbing 80% of sudden traffic spikes during promotional events
+                        and shielding backend database clusters from crashing.</p>
                 </div>
                 <div class="card fade-in" style="background: var(--card);">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
                         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
                         <polyline points="17 6 23 6 23 12"></polyline>
                     </svg>
                     <h3>Media Core Web Vitals</h3>
-                    <p style="font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem;">Optimized dynamic cache keys and stale-while-revalidate policies on AWS CloudFront, cutting Largest Contentful Paint (LCP) times by 1.8s globally and boosting search presence.</p>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem;">Optimized dynamic cache keys
+                        and stale-while-revalidate policies on AWS CloudFront, cutting Largest Contentful Paint (LCP)
+                        times by 1.8s globally and boosting search presence.</p>
                 </div>
             </div>
         </div>
@@ -392,10 +477,13 @@
         <div class="container">
             <div class="card fade-in"
                 style="background: var(--primary); color: white; text-align: center; border: none; padding: 4rem 2rem;">
-                <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.5rem;">Ready to Accelerate Your Platform?</h2>
-                <p style="margin-bottom: 3rem; opacity: 0.9; font-size: 1.25rem;">Work directly with an independent CDN expert to resolve your caching challenges.</p>
+                <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.5rem;">Ready to Accelerate Your
+                    Platform?</h2>
+                <p style="margin-bottom: 3rem; opacity: 0.9; font-size: 1.25rem;">Work directly with an independent CDN
+                    expert to resolve your caching challenges.</p>
                 <div style="display: flex; justify-content: center; gap: 1.5rem;">
-                    <a href="contact.html" class="btn" style="background: white; color: var(--primary); padding: 1rem 2.5rem;">Get Started Now</a>
+                    <a href="contact.html" class="btn"
+                        style="background: white; color: var(--primary); padding: 1rem 2.5rem;">Get Started Now</a>
                 </div>
             </div>
         </div>
@@ -415,7 +503,8 @@
                         </svg>
                         EdgeFlux
                     </a>
-                    <p style="opacity: 0.7; font-size: 0.9rem;">Independent CDN consulting and cache strategy by John Doe.
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Independent CDN consulting and cache strategy by John
+                        Doe.
                     </p>
                     <div class="social-icons">
                         <a href="#" class="social-icon">fb</a>
@@ -444,7 +533,8 @@
                 </div>
                 <div class="footer-col">
                     <h4>Stay Updated</h4>
-                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get caching optimization tips in your inbox.</p>
+                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get caching optimization tips in
+                        your inbox.</p>
                     <form style="display: flex; gap: 0.5rem;">
                         <input type="email" placeholder="email@example.com"
                             style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; flex: 1; color: white;">

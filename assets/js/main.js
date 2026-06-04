@@ -49,14 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Active Menu Highlighting
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-links a, .mobile-links a');
-    
+
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         const isDropdownItem = link.closest('.dropdown-menu');
-        
+
         if (href === currentPath) {
             link.classList.add('active');
-        } 
+        }
     });
 
     // 3. Sticky Navbar
@@ -151,16 +151,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdown = document.getElementById('countdown');
     if (countdown) {
         const targetDate = new Date().getTime() + (30 * 24 * 60 * 60 * 1000); // 30 days from now
-        
+
         setInterval(() => {
             const now = new Date().getTime();
             const distance = targetDate - now;
-            
+
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
+
             countdown.innerHTML = `
                 <div>${days}<span>Days</span></div>
                 <div>${hours}<span>Hours</span></div>
