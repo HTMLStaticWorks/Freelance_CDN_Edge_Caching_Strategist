@@ -277,6 +277,12 @@
             z-index: 1002;
         }
 
+        @media (max-width: 768px) {
+            .desktop-profile-info {
+                display: none !important;
+            }
+        }
+
         @media (max-width: 1023px) {
             .sidebar {
                 position: fixed;
@@ -408,6 +414,16 @@
                 padding-right: 1.5rem !important;
             }
         }
+
+        .sidebar-profile {
+            display: none;
+        }
+
+        @media (max-width: 1023px) {
+            .sidebar-profile {
+                display: flex !important;
+            }
+        }
     </style>
 </head>
 
@@ -442,21 +458,6 @@
             <a href="index.html" class="menu-item" style="color: var(--danger);">🚪 <span>Logout</span></a>
         </div>
 
-        <!-- Sidebar User Profile (Desktop & Mobile) -->
-        <div class="sidebar-user"
-            style="padding: 1.25rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto;">
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <div
-                    style="width: 35px; height: 35px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 0.8rem; flex-shrink: 0;">
-                    JD</div>
-                <div style="overflow: hidden;">
-                    <div
-                        style="font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        John Doe</div>
-                    <div style="font-size: 0.7rem; opacity: 0.5;">Administrator</div>
-                </div>
-            </div>
-        </div>
 
         <div class="sidebar-controls-mobile" style="display: none;">
             <div class="menu-label">Interface Options</div>
@@ -468,6 +469,17 @@
                         style="background: rgba(255,255,255,0.05); border: none; color: white; padding: 0.5rem; border-radius: 8px; flex: 1; font-size: 0.8rem; height: 40px; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">⇄</button>
                 </div>
 
+            </div>
+        </div>
+
+        <!-- Sidebar profile (shown only on mobile/tablet view inside hamburger) -->
+        <div class="sidebar-profile" style="display: none; align-items: center; gap: 0.75rem; padding: 1rem 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: auto;">
+            <div style="width: 35px; height: 35px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 0.8rem; flex-shrink: 0;">
+                JD
+            </div>
+            <div style="overflow: hidden; text-align: left;">
+                <div style="font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: white;">John Doe</div>
+                <div style="font-size: 0.7rem; opacity: 0.5; color: rgba(255, 255, 255, 0.7);">Administrator</div>
             </div>
         </div>
     </aside>
@@ -514,6 +526,15 @@
                     </button>
                     <button class="btn-icon" id="rtl-toggle" title="Toggle RTL">⇄</button>
                     <button class="btn-icon" id="theme-toggle" title="Toggle Theme">🌙</button>
+                    <div style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; border-inline-start: 1px solid var(--border); padding-inline-start: 1rem; margin-inline-start: 0.5rem;">
+                        <div style="width: 35px; height: 35px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 0.8rem; flex-shrink: 0;">
+                            JD
+                        </div>
+                        <div style="overflow: hidden; text-align: left;" class="desktop-profile-info">
+                            <div style="font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text);">John Doe</div>
+                            <div style="font-size: 0.7rem; opacity: 0.5; color: var(--muted);">Administrator</div>
+                        </div>
+                    </div>
                 </div>
                 <button id="dash-sidebar-toggle" class="btn-icon"
                     style="background:none; font-size: 1.2rem; color: var(--text); padding: 0.4rem;">☰</button>

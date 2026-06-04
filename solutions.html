@@ -4,9 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solutions | EdgeFlux Edge Strategy</title>
+    <title>CDN & Caching Solutions for High-Traffic Verticals | EdgeFlux by John Doe</title>
+    <meta name="description"
+        content="Independent CDN optimization and cache strategy solutions. I help SaaS, E-commerce, Media, and Learning platforms optimize Cloudflare, Fastly, and CloudFront.">
+    
+    <!-- Favicon -->
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,5 95,25 95,75 50,95 5,75 5,25%22 fill=%22%232563EB%22/><path d=%22M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/></svg>">
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .solution-img {
@@ -30,6 +35,7 @@
 
 <body>
 
+    <!-- Header -->
     <header>
         <div class="container">
             <nav class="nav-wrapper">
@@ -43,7 +49,7 @@
                 </a>
                 <ul class="nav-links">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.html">Home ▾</a>
                         <ul class="dropdown-menu">
                             <li><a href="index.html">Home 1</a></li>
                             <li><a href="home2.html">Home 2</a></li>
@@ -101,67 +107,64 @@
         </div>
     </div>
 
-    <!-- 1. Hero Section (Standardized) -->
+    <!-- Hero Section -->
     <section class="hero" style="min-height: 60vh; background-color: #2563EB; color: white; text-align: center;">
         <div class="container">
             <div class="fade-in" style="max-width: 800px; margin: 0 auto;">
-                <h1 style="color: white; font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem;">Industry-Specific
+                <h1 style="color: white; font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem;">Targeted Caching
                     <br>Edge Solutions.
                 </h1>
-                <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: 3rem;">Global infrastructure,
-                    tailored for your unique traffic patterns. We optimize the edge where it matters most.</p>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: 3rem;">Tailoring CDN architecture and routing configurations to match your application's unique workloads. I optimize the edge where it makes the biggest business impact.</p>
                 <div style="display: flex; justify-content: center; gap: 1rem;">
-                    <a href="#verticals" class="btn btn-outline" style="border-color: white; color: white;">Browse
-                        Industries</a>
+                    <a href="#verticals" class="btn btn-outline" style="border-color: white; color: white;">Browse Industries</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. Solutions Vertical Section -->
+    <!-- Solutions Vertical Section -->
     <section id="verticals" class="solutions-expertise">
         <div class="container">
             <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-                <h2 class="fade-in">Sector Expertise</h2>
+                <h2 class="fade-in">Industries I Optimize</h2>
+                <p style="color: var(--muted); max-width: 600px; margin: 1rem auto 0; font-size: 1.1rem;">
+                    Solving caching bottlenecks for data-heavy applications and high-traffic platforms.
+                </p>
             </div>
             <div class="grid-cards">
                 <div class="card fade-in" style="text-align: center;">
                     <img src="assets/images/ecomm.jpg" alt="E-Commerce" class="solution-img">
-                    <span class="benefit-tag">Retail & Luxury</span>
-                    <h3 style="margin-top: 1rem;">E-Commerce</h3>
-                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Sub-second inventory
-                        lookups and lightning-fast product pages to maximize conversion.</p>
+                    <span class="benefit-tag">E-Commerce & Retail</span>
+                    <h3 style="margin-top: 1rem;">E-Commerce Platforms</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Configuring shopping cart bypass rules, inventory lookup cache keys, and asset compression to ensure fast product page delivery and higher search rankings.</p>
                 </div>
                 <div class="card fade-in" style="text-align: center;">
                     <img src="assets/images/media.jpg" alt="Streaming" class="solution-img">
-                    <span class="benefit-tag">OTT & Media</span>
-                    <h3 style="margin-top: 1rem;">Media & Streaming</h3>
-                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Zero-buffering video
-                        delivery with adaptive bitrate logic at the network edge.</p>
+                    <span class="benefit-tag">OTT & Publishing</span>
+                    <h3 style="margin-top: 1rem;">Media & Publishing</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Setting up stale-while-revalidate policies, large image optimization pipelines, and origin shielding to handle sudden news-related traffic surges with ease.</p>
                 </div>
                 <div class="card fade-in" style="text-align: center;">
                     <img src="assets/images/igame.jpg" alt="Fintech" class="solution-img">
-                    <span class="benefit-tag">Secure Transactions</span>
-                    <h3 style="margin-top: 1rem;">iGaming & Fintech</h3>
-                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Low-latency transaction
-                        validation and DDoS protection for mission-critical apps.</p>
+                    <span class="benefit-tag">High Security & API</span>
+                    <h3 style="margin-top: 1rem;">SaaS & API Systems</h3>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Designing secure caching strategies for dynamic JSON responses, optimizing JWT validation at the edge, and writing rate-limiting policies to shield origins.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. The Edge Advantage (New) -->
+    <!-- The Edge Advantage -->
     <section style="background: var(--card);">
         <div class="container">
             <div class="feature-grid fade-in">
                 <div class="feature-text">
                     <span class="badge">The Advantage</span>
-                    <h2>Why Enterprise Teams <br><span style="color: var(--primary);">Choose EdgeFlux.</span></h2>
-                    <p style="color: var(--muted); margin-bottom: 2.5rem;">We bridge the gap between generic CDN
-                        providers and your unique engineering requirements.</p>
+                    <h2>Why Engineering Teams <br><span style="color: var(--primary);">Work With Me.</span></h2>
+                    <p style="color: var(--muted); margin-bottom: 2.5rem;">I bridge the gap between generic, default CDN configurations and your application's specific origin requirements. You get direct expertise without agency overhead.</p>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
                         <div class="stat-item">
-                            <h4 style="color: var(--primary);">98%</h4>
+                            <h4 style="color: var(--primary);">99.4%</h4>
                             <p style="font-size: 0.8rem;">Average Cache Hit Ratio</p>
                         </div>
                         <div class="stat-item">
@@ -177,50 +180,58 @@
         </div>
     </section>
 
-    <!-- 4. Global Deployment (New) -->
+    <!-- Global Deployment -->
     <section>
         <div class="container">
             <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-                <h2 class="fade-in">Global Deployment</h2>
+                <h2 class="fade-in">Proven Platform Expert</h2>
+                <p style="color: var(--muted); max-width: 600px; margin: 1rem auto 0; font-size: 1.1rem;">
+                    Configuring and optimizing third-party CDNs to act as your custom global network.
+                </p>
             </div>
             <div class="card fade-in" style="padding: 0; overflow: hidden; border: none;">
                 <img src="assets/images/deploy.jpg" alt="Network Map"
                     style="width: 100%; height: 400px; object-fit: cover;">
                 <div style="padding: 3rem; background: var(--secondary); color: white; text-align: center;">
-                    <h3>Anycast Routing for Every User.</h3>
-                    <p style="opacity: 0.7; max-width: 700px; margin: 1rem auto 2rem;">Our Anycast network ensures your
-                        users are always directed to the closest possible point of presence, regardless of where they
-                        are in the world.</p>
-                    <a href="contact.html" class="btn btn-primary">View Network Status</a>
+                    <h3>Platform-Agnostic Optimization.</h3>
+                    <p style="opacity: 0.7; max-width: 700px; margin: 1rem auto 2rem;">I align routing policies, geo-steering rules, and origin shielding configurations across your existing providers, whether you are using Cloudflare, Fastly, AWS CloudFront, or Akamai.</p>
+                    <a href="contact.html" class="btn btn-primary">Book a Configuration Review</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Developer First API (New) -->
+    <!-- Developer First Edge scripting -->
     <section style="background: var(--card);">
         <div class="container">
             <div class="feature-grid fade-in">
                 <div class="feature-img" style="background: #0F172A; padding: 2rem; border-radius: 20px;">
-                    <pre style="color: #38BDF8; font-family: 'DM Mono', monospace; font-size: 0.8rem;">
-curl -X POST "https://api.edgeflux.com/v1/purge" \
-     -H "Authorization: Bearer ${API_KEY}" \
-     -d '{
-       "surrogate_key": "product_updates",
-       "region": "global",
-       "mode": "instant"
-     }'
+                    <pre style="color: #38BDF8; font-family: 'DM Mono', monospace; font-size: 0.8rem; overflow-x: auto;">
+// Example Cloudflare Worker Route
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const url = new URL(request.url)
+  // Custom routing rule at the edge
+  if (url.pathname.startsWith('/api/v2/')) {
+    return fetch(request, {
+      cf: { cacheTtl: 300, cacheEverything: true }
+    })
+  }
+  return fetch(request)
+}
                     </pre>
                 </div>
                 <div class="feature-text">
-                    <span class="badge">Developer Focused</span>
-                    <h2>Built by SREs, <br><span style="color: var(--primary);">for SREs.</span></h2>
-                    <p style="color: var(--muted); margin-bottom: 2rem;">A robust, well-documented API that allows your
-                        CI/CD pipelines to control your edge logic programmatically.</p>
+                    <span class="badge">Edge Scripting</span>
+                    <h2>Engineered for <br><span style="color: var(--primary);">Your Stack.</span></h2>
+                    <p style="color: var(--muted); margin-bottom: 2rem;">I write custom edge worker scripts (Cloudflare Workers, Fastly VCL/Compute, CloudFront Functions) to implement headers optimization, dynamic security routing, and localized data manipulations.</p>
                     <ul style="list-style: none; display: grid; gap: 1rem;">
-                        <li>🚀 Instant Global Purge (< 150ms)</li>
-                        <li>🛠️ Custom Edge Dictionary Support</li>
-                        <li>📈 Real-time Log Streaming (gRPC)</li>
+                        <li>🚀 Custom Cache Key Customization</li>
+                        <li>🛠️ Cookie-Based Dynamic Routing Rules</li>
+                        <li>📈 Header Normalization & Origin Shielding</li>
                     </ul>
                 </div>
             </div>
@@ -241,29 +252,27 @@ curl -X POST "https://api.edgeflux.com/v1/purge" \
                         </svg>
                         EdgeFlux
                     </a>
-                    <p style="opacity: 0.7; font-size: 0.9rem;">Accelerate the Edge. Eliminate Latency. Own the Cache.
-                    </p>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Freelance CDN & Edge Caching strategy by John Doe. Optimize performance, cut egress fees.</p>
                     <div class="social-icons">
+                        <a href="#" class="social-icon">fb</a>
                         <a href="#" class="social-icon">𝕏</a>
                         <a href="#" class="social-icon">in</a>
-                        <a href="#" class="social-icon">gh</a>
-                        <a href="#" class="social-icon">rss</a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <h4>Services</h4>
                     <ul class="footer-links">
-                        <li><a href="#">CDN Architecture</a></li>
-                        <li><a href="#">TTL Optimization</a></li>
-                        <li><a href="#">Origin Shield</a></li>
-                        <li><a href="#">Edge Analytics</a></li>
+                        <li><a href="services.html">CDN Architecture</a></li>
+                        <li><a href="services.html">TTL Optimization</a></li>
+                        <li><a href="services.html">Origin Shielding</a></li>
+                        <li><a href="services.html">Edge Logic Scripting</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Company</h4>
+                    <h4>Info</h4>
                     <ul class="footer-links">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Me</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
                         <li><a href="results.html">Results</a></li>
                         <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="contact.html">Contact</a></li>
@@ -271,8 +280,7 @@ curl -X POST "https://api.edgeflux.com/v1/purge" \
                 </div>
                 <div class="footer-col">
                     <h4>Stay Updated</h4>
-                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get edge caching tips delivered to
-                        your inbox.</p>
+                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get caching optimization tips sent to your inbox.</p>
                     <form style="display: flex; gap: 0.5rem;">
                         <input type="email" placeholder="email@example.com"
                             style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; flex: 1; color: white;">
@@ -282,7 +290,7 @@ curl -X POST "https://api.edgeflux.com/v1/purge" \
             </div>
             <div
                 style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.8rem; opacity: 0.6;">
-                <p>© 2026 EdgeFlux · All rights reserved.</p>
+                <p>© 2026 EdgeFlux · Freelance CDN Strategy by John Doe. All rights reserved.</p>
             </div>
         </div>
     </footer>

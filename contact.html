@@ -4,9 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | EdgeFlux Edge Strategy</title>
+    <title>Book a CDN Caching Audit & Optimization | EdgeFlux by John Doe</title>
+    <meta name="description"
+        content="Get in touch with John Doe, independent Freelance CDN Consultant & Edge Caching Strategist, to discuss your latency bottlenecks and cache optimization projects.">
+    
+    <!-- Favicon -->
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,5 95,25 95,75 50,95 5,75 5,25%22 fill=%22%232563EB%22/><path d=%22M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/></svg>">
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .contact-layout {
@@ -66,7 +71,8 @@
 
         .map-container {
             width: 100%;
-            height: 450px;
+            height: auto;
+            min-height: 350px;
             background: var(--card);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
@@ -105,6 +111,7 @@
         @media (max-width: 992px) {
             .contact-layout {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
         }
     </style>
@@ -112,6 +119,7 @@
 
 <body>
 
+    <!-- Header -->
     <header>
         <div class="container">
             <nav class="nav-wrapper">
@@ -125,7 +133,7 @@
                 </a>
                 <ul class="nav-links">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.html">Home ▾</a>
                         <ul class="dropdown-menu">
                             <li><a href="index.html">Home 1</a></li>
                             <li><a href="home2.html">Home 2</a></li>
@@ -183,27 +191,26 @@
         </div>
     </div>
 
-    <!-- 1. Hero Section (Standardized) -->
+    <!-- Hero Section -->
     <section class="hero" style="min-height: 60vh; background-color: #2563EB; color: white; text-align: center;">
         <div class="container">
             <div class="fade-in" style="max-width: 800px; margin: 0 auto;">
-                <h1 style="color: white; font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem;">Let's Talk
-                    <br>Performance.</h1>
-                <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: 3rem;">Have a complex caching
-                    challenge? Our edge experts are ready to audit your infrastructure.</p>
+                <h1 style="color: white; font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem;">Let's Optimize
+                    <br>Your Edge Setup.</h1>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: 3rem;">Discuss your dynamic caching bottlenecks, egress costs, or edge worker requirements directly with me.</p>
                 <div style="display: flex; justify-content: center; gap: 1rem;">
-                    <a href="about.html" class="btn btn-outline" style="border-color: white; color: white;">Why
-                        EdgeFlux?</a>
+                    <a href="about.html" class="btn btn-outline" style="border-color: white; color: white;">Read My SRE Career Timeline</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact-form">
+    <!-- Contact Form & Info -->
+    <section id="contact-form" style="padding-bottom: 0;">
         <div class="container">
             <div class="contact-layout">
                 <div class="contact-form fade-in">
-                    <form id="contact-form">
+                    <form id="contact-form-element">
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                             <div class="form-group">
                                 <label for="first-name">First Name</label>
@@ -225,10 +232,9 @@
                         <div class="form-group">
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="6"
-                                placeholder="Tell us about your infrastructure goals..." required></textarea>
+                                placeholder="Tell me about your caching architecture or egress fee reduction goals..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send
-                            Message</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
                     </form>
                 </div>
 
@@ -236,52 +242,54 @@
                     <div class="contact-info-item">
                         <div class="info-icon">📍</div>
                         <div>
-                            <h4>Visit Us</h4>
-                            <p style="color: var(--muted); font-size: 0.95rem;">123 Edge Node Plaza, Suite 404<br>San
-                                Francisco, CA 94103</p>
+                            <h4>Location</h4>
+                            <p style="color: var(--muted); font-size: 0.95rem;">San Francisco, CA<br>Remote / Worldwide Engagement</p>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <div class="info-icon">✉️</div>
                         <div>
-                            <h4>Email Us</h4>
+                            <h4>Direct Email</h4>
                             <p style="color: var(--muted); font-size: 0.95rem;">
-                                strategy@edgeflux.io<br>support@edgeflux.io
+                                strategy@edgeflux.io
                             </p>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <div class="info-icon">📞</div>
                         <div>
-                            <h4>Call Us</h4>
-                            <p style="color: var(--muted); font-size: 0.95rem;">+1 (555) 000-EDGE<br>Mon-Fri, 9am - 6pm
-                                PST
-                            </p>
+                            <h4>Direct Phone Line</h4>
+                            <p style="color: var(--muted); font-size: 0.95rem;">+1 (415) 555-0199<br>Mon-Fri, 9am - 6pm PST (By Appointment Only)</p>
                         </div>
                     </div>
 
                     <div style="margin-top: 3rem;">
-                        <h4 style="margin-bottom: 1.5rem;">Connect with Us</h4>
-                        <div class="contact-socials" style="justify-content: flex-start;">
+                        <h4 style="margin-bottom: 1.5rem;">Connect with Me</h4>
+                        <div class="contact-socials" style="justify-content: flex-start; padding: 0;">
+                            <a href="#" class="contact-social-link">fb</a>
                             <a href="#" class="contact-social-link">𝕏</a>
                             <a href="#" class="contact-social-link">in</a>
-                            <a href="#" class="contact-social-link">gh</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-        </div>
 
-
-        <div class="map-container">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.83543450937!2d-122.4194155!3d37.7749295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTwitter%20HQ!5e0!3m2!1sen!2sus!4v1625123456789!5m2!1sen!2sus"
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <!-- Global Coverage Banner instead of Map -->
+        <div class="map-container" style="background: var(--secondary); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; padding: 4rem 2rem;">
+            <h3 style="margin-bottom: 1rem; color: white;">Worldwide Remote Consulting & Execution</h3>
+            <p style="max-width: 600px; opacity: 0.8; margin: 0 auto 2.5rem; font-size: 1.05rem; line-height: 1.6;">
+                I support high-traffic engineering and DevOps teams worldwide. I specialize in aligning configurations across edge points of presence in North America, Europe, Asia-Pacific, and South America.
+            </p>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; font-weight: bold; color: var(--primary);">
+                <span>⚡ Latency Diagnostics</span>
+                <span>🌍 Global PoP Audits</span>
+                <span>🛠️ Collaborative Code Integration</span>
+            </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -295,29 +303,27 @@
                         </svg>
                         EdgeFlux
                     </a>
-                    <p style="opacity: 0.7; font-size: 0.9rem;">Accelerate the Edge. Eliminate Latency. Own the Cache.
-                    </p>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Freelance CDN & Edge Caching strategy by John Doe. Optimize performance, cut egress fees.</p>
                     <div class="social-icons">
+                        <a href="#" class="social-icon">fb</a>
                         <a href="#" class="social-icon">𝕏</a>
                         <a href="#" class="social-icon">in</a>
-                        <a href="#" class="social-icon">gh</a>
-                        <a href="#" class="social-icon">rss</a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <h4>Services</h4>
                     <ul class="footer-links">
-                        <li><a href="#">CDN Architecture</a></li>
-                        <li><a href="#">TTL Optimization</a></li>
-                        <li><a href="#">Origin Shield</a></li>
-                        <li><a href="#">Edge Analytics</a></li>
+                        <li><a href="services.html">CDN Architecture</a></li>
+                        <li><a href="services.html">TTL Optimization</a></li>
+                        <li><a href="services.html">Origin Shielding</a></li>
+                        <li><a href="services.html">Edge Logic Scripting</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Company</h4>
+                    <h4>Info</h4>
                     <ul class="footer-links">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Me</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
                         <li><a href="results.html">Results</a></li>
                         <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="contact.html">Contact</a></li>
@@ -325,8 +331,7 @@
                 </div>
                 <div class="footer-col">
                     <h4>Stay Updated</h4>
-                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get edge caching tips delivered to
-                        your inbox.</p>
+                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get caching optimization tips sent to your inbox.</p>
                     <form style="display: flex; gap: 0.5rem;">
                         <input type="email" placeholder="email@example.com"
                             style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; flex: 1; color: white;">
@@ -336,7 +341,7 @@
             </div>
             <div
                 style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.8rem; opacity: 0.6;">
-                <p>© 2026 EdgeFlux · All rights reserved.</p>
+                <p>© 2026 EdgeFlux · Freelance CDN Strategy by John Doe. All rights reserved.</p>
             </div>
         </div>
     </footer>

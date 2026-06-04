@@ -3,46 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing | EdgeFlux Edge Strategy</title>
+    <title>Consulting Services & Pricing Packages | EdgeFlux by John Doe</title>
+    <meta name="description" content="Transparent, fixed-fee CDN optimization audits and edge caching consulting sprints. Find the right package to speed up your platform.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,5 95,25 95,75 50,95 5,75 5,25%22 fill=%22%232563EB%22/><path d=%22M30,50 Q50,30 70,50 M35,55 Q50,40 65,55 M40,60 Q50,50 60,60%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/></svg>">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .pricing-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 4rem;
-        }
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: var(--card);
-            border: 1px solid var(--border);
-            transition: .4s;
-            border-radius: 34px;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px; width: 26px;
-            left: 4px; bottom: 3px;
-            background-color: var(--primary);
-            transition: .4s;
-            border-radius: 50%;
-        }
-        input:checked + .slider:before { transform: translateX(26px); }
-
-        .price-yearly { display: none; }
-        
         .price-card.featured {
             background: var(--secondary);
             color: white;
@@ -62,6 +27,7 @@
 </head>
 <body>
 
+    <!-- Header -->
     <header>
         <div class="container">
             <nav class="nav-wrapper">
@@ -74,7 +40,7 @@
                 </a>
                 <ul class="nav-links">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.html">Home ▾</a>
                         <ul class="dropdown-menu">
                             <li><a href="index.html">Home 1</a></li>
                             <li><a href="home2.html">Home 2</a></li>
@@ -132,104 +98,104 @@
         </div>
     </div>
 
+    <!-- Hero Section -->
     <section class="hero" style="min-height: 40vh; padding-top: 150px; text-align: center;">
         <div class="container">
-            <h1 class="fade-in">Scale your Edge <br><span style="color: var(--primary);">Efficiently.</span></h1>
-            <p class="fade-in" style="max-width: 600px; margin: 1rem auto;">Transparent pricing for high-performance teams. No hidden egress fees.</p>
+            <h1 class="fade-in">Consulting Sprints & <br><span style="color: var(--primary);">Retainer Packages.</span></h1>
+            <p class="fade-in" style="max-width: 600px; margin: 1rem auto; font-size: 1.1rem; color: var(--muted);">
+                Transparent, fixed-fee optimizations for engineering teams. Direct access to a specialized independent consultant—no agency overhead.
+            </p>
         </div>
     </section>
 
-    <section>
+    <!-- Pricing Packages -->
+    <section style="padding-top: 2rem;">
         <div class="container">
-            <div class="pricing-toggle fade-in">
-                <span style="font-weight: 600;">Monthly</span>
-                <label class="switch">
-                    <input type="checkbox" id="pricing-checkbox">
-                    <span class="slider"></span>
-                </label>
-                <span style="font-weight: 600;">Yearly <small style="color: var(--success);">(Save 20%)</small></span>
-            </div>
-
             <div class="grid-cards">
-                <!-- Starter -->
+                <!-- Audit -->
                 <div class="card price-card fade-in">
-                    <h4>Starter</h4>
-                    <p style="font-size: 0.9rem; color: var(--muted); margin: 0.5rem 0 1.5rem;">For small apps & sites.</p>
-                    <h2 class="price-monthly">$49<small style="font-size: 1rem; opacity: 0.5;">/mo</small></h2>
-                    <h2 class="price-yearly">$39<small style="font-size: 1rem; opacity: 0.5;">/mo</small></h2>
-                    <ul style="list-style: none; margin: 2rem 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.8rem;">✓ 1TB Bandwidth</li>
-                        <li style="margin-bottom: 0.8rem;">✓ 50 Cache Rules</li>
-                        <li style="margin-bottom: 0.8rem;">✓ Global Purge (Standard)</li>
-                        <li style="margin-bottom: 0.8rem;">✓ Community Support</li>
+                    <h4>CDN Performance Audit</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin: 0.5rem 0 1.5rem;">For sizing bottlenecks and planning strategy.</p>
+                    <h2 style="font-size: 2.5rem; color: var(--text);">$1,490 <small style="font-size: 0.9rem; font-weight: normal; opacity: 0.6;">one-time</small></h2>
+                    <ul style="list-style: none; margin: 2rem 0; font-size: 0.9rem; padding: 0;">
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> Detailed TTL & Cache config analysis</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> Header optimization recommendations</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> Egress cost reduction roadmap</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> 7 days of email support follow-up</li>
                     </ul>
-                    <a href="register.html" class="btn btn-outline" style="width: 100%; justify-content: center;">Get Started</a>
+                    <a href="contact.html" class="btn btn-outline" style="width: 100%; justify-content: center; margin-top: auto;">Book Performance Audit</a>
                 </div>
-                <!-- Pro -->
+                <!-- Sprint -->
                 <div class="card price-card featured fade-in">
-                    <div class="badge" style="background: var(--primary); color: white; margin-bottom: 1rem;">Most Popular</div>
-                    <h4>Professional</h4>
-                    <p style="font-size: 0.9rem; opacity: 0.8; margin: 0.5rem 0 1.5rem;">For high-growth SaaS.</p>
-                    <h2 class="price-monthly">$199<small style="font-size: 1rem; opacity: 0.5;">/mo</small></h2>
-                    <h2 class="price-yearly">$159<small style="font-size: 1rem; opacity: 0.5;">/mo</small></h2>
-                    <ul style="list-style: none; margin: 2rem 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.8rem;">✓ 10TB Bandwidth</li>
-                        <li style="margin-bottom: 0.8rem;">✓ Unlimited Rules</li>
-                        <li style="margin-bottom: 0.8rem;">✓ Surrogate Key Purge</li>
-                        <li style="margin-bottom: 0.8rem;">✓ Priority 24/7 Support</li>
-                        <li style="margin-bottom: 0.8rem;">✓ WAF at the Edge</li>
+                    <div class="badge" style="background: var(--primary); color: white; margin-bottom: 1rem; font-weight: bold;">Most Requested</div>
+                    <h4>Optimization Sprint</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin: 0.5rem 0 1.5rem;">For hands-on setup and full routing tuning.</p>
+                    <h2 style="font-size: 2.5rem; color: white;">$4,500 <small style="font-size: 0.9rem; font-weight: normal; opacity: 0.8;">one-time</small></h2>
+                    <ul style="list-style: none; margin: 2rem 0; font-size: 0.9rem; padding: 0;">
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> Everything in the Performance Audit</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> Hands-on edge routing configuration</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> Custom Cloudflare Workers / Fastly VCL</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> Multi-CDN & Origin Shielding setup</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> 30 days of slack/email support</li>
                     </ul>
-                    <a href="register.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Start Pro Trial</a>
+                    <a href="contact.html" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: auto;">Book Optimization Sprint</a>
                 </div>
-                <!-- Enterprise -->
+                <!-- Retainer -->
                 <div class="card price-card fade-in">
-                    <h4>Enterprise</h4>
-                    <p style="font-size: 0.9rem; color: var(--muted); margin: 0.5rem 0 1.5rem;">For global scale.</p>
-                    <h2 style="margin-bottom: 0;">Custom</h2>
-                    <p style="font-size: 0.8rem; margin-bottom: 1.5rem; opacity: 0.5;">Tailored for your needs</p>
-                    <ul style="list-style: none; margin: 2rem 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.8rem;">✓ PB Scale Bandwidth</li>
-                        <li style="margin-bottom: 0.8rem;">✓ Dedicated SRE</li>
-                        <li style="margin-bottom: 0.8rem;">✓ Custom POP Selection</li>
-                        <li style="margin-bottom: 0.8rem;">✓ White-glove Onboarding</li>
+                    <h4>Ongoing Advisory</h4>
+                    <p style="font-size: 0.9rem; color: var(--muted); margin: 0.5rem 0 1.5rem;">For scale monitoring and continuous tuning.</p>
+                    <h2 style="font-size: 2.5rem; color: var(--text);">$1,200 <small style="font-size: 0.9rem; font-weight: normal; opacity: 0.6;">/month</small></h2>
+                    <ul style="list-style: none; margin: 2rem 0; font-size: 0.9rem; padding: 0;">
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> Monthly cache efficiency checks</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> Ongoing edge worker adjustments</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> SRE troubleshooting escalation</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span>✓</span> Guaranteed 48-hour response SLA</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-outline" style="width: 100%; justify-content: center;">Contact Sales</a>
+                    <a href="contact.html" class="btn btn-outline" style="width: 100%; justify-content: center; margin-top: auto;">Inquire About Retainer</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Comparison Table -->
     <section style="background: var(--card);">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 4rem;">Detailed Comparison</h2>
+            <h2 style="text-align: center; margin-bottom: 1rem;">Detailed Package Comparison</h2>
+            <p style="text-align: center; color: var(--muted); max-width: 600px; margin: 0 auto 4rem;">Understanding the scope and deliverables of each consulting engagement.</p>
             <div style="overflow-x: auto;">
                 <table class="comparison-table" style="width: 100%; border-collapse: collapse;">
                     <thead>
                         <tr>
-                            <th style="text-align: left; padding: 1.5rem;">Feature</th>
-                            <th>Starter</th>
-                            <th>Professional</th>
-                            <th>Enterprise</th>
+                            <th style="text-align: left; padding: 1.5rem;">Scope Detail</th>
+                            <th>Performance Audit</th>
+                            <th>Optimization Sprint</th>
+                            <th>Ongoing Advisory</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="text-align: left; padding: 1rem; border: 1px solid var(--border);">Global Purge</td>
-                            <td style="text-align: center; border: 1px solid var(--border);">Standard</td>
-                            <td style="text-align: center; border: 1px solid var(--border); font-weight: 700; color: var(--primary);">Instant</td>
-                            <td style="text-align: center; border: 1px solid var(--border); font-weight: 700; color: var(--primary);">Instant</td>
+                            <td style="text-align: left; padding: 1rem; border: 1px solid var(--border); font-weight: 600;">Execution Mode</td>
+                            <td style="text-align: center; border: 1px solid var(--border);">Analysis & Blueprint</td>
+                            <td style="text-align: center; border: 1px solid var(--border); font-weight: 700; color: var(--primary);">Hands-on Implementation</td>
+                            <td style="text-align: center; border: 1px solid var(--border);">Advisory & Updates</td>
                         </tr>
                         <tr>
-                            <td style="text-align: left; padding: 1rem; border: 1px solid var(--border);">Edge Functions</td>
-                            <td style="text-align: center; border: 1px solid var(--border);">-</td>
-                            <td style="text-align: center; border: 1px solid var(--border);"><span style="color: var(--success);">✓</span></td>
-                            <td style="text-align: center; border: 1px solid var(--border);"><span style="color: var(--success);">✓</span></td>
+                            <td style="text-align: left; padding: 1rem; border: 1px solid var(--border); font-weight: 600;">Edge Scripting</td>
+                            <td style="text-align: center; border: 1px solid var(--border);">Code Recommendations</td>
+                            <td style="text-align: center; border: 1px solid var(--border);"><span style="color: var(--success); font-weight: bold;">✓ Custom Written</span></td>
+                            <td style="text-align: center; border: 1px solid var(--border);"><span style="color: var(--success); font-weight: bold;">✓ Maintenance</span></td>
                         </tr>
                         <tr>
-                            <td style="text-align: left; padding: 1rem; border: 1px solid var(--border);">Multi-CDN</td>
-                            <td style="text-align: center; border: 1px solid var(--border);">-</td>
-                            <td style="text-align: center; border: 1px solid var(--border);">-</td>
-                            <td style="text-align: center; border: 1px solid var(--border);"><span style="color: var(--success);">✓</span></td>
+                            <td style="text-align: left; padding: 1rem; border: 1px solid var(--border); font-weight: 600;">Origin Shielding</td>
+                            <td style="text-align: center; border: 1px solid var(--border);">Audit setup</td>
+                            <td style="text-align: center; border: 1px solid var(--border);"><span style="color: var(--success); font-weight: bold;">✓ Configured</span></td>
+                            <td style="text-align: center; border: 1px solid var(--border);"><span style="color: var(--success); font-weight: bold;">✓ Monitored</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; padding: 1rem; border: 1px solid var(--border); font-weight: 600;">Handover Support</td>
+                            <td style="text-align: center; border: 1px solid var(--border);">7 Days (Email)</td>
+                            <td style="text-align: center; border: 1px solid var(--border);">30 Days (Slack + Email)</td>
+                            <td style="text-align: center; border: 1px solid var(--border);">Continuous SLA</td>
                         </tr>
                     </tbody>
                 </table>
@@ -237,25 +203,27 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
     <section>
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 4rem;">Pricing FAQ</h2>
+            <h2 style="text-align: center; margin-bottom: 1rem;">Pricing & Engagement FAQ</h2>
+            <p style="text-align: center; color: var(--muted); max-width: 600px; margin: 0 auto 4rem;">Clear answers on how I work with your engineering team and handle project scopes.</p>
             <div class="faq-grid">
                 <div class="fade-in">
-                    <h4 style="margin-bottom: 1rem;">Are there setup fees?</h4>
-                    <p style="color: var(--muted); font-size: 0.9rem;">No, there are no hidden setup fees for any of our standard plans. Enterprise custom POP setups may involve a one-time configuration fee.</p>
+                    <h4 style="margin-bottom: 1rem;">Do you work with our internal developers/SREs?</h4>
+                    <p style="color: var(--muted); font-size: 0.9rem;">Yes, absolutely. I integrate with your existing team workflow. I can write and deliver CDN configuration scripts (such as Terraform, Fastly VCL, or Cloudflare Workers) directly, or work as an SRE specialist to implement them on your staging and production environments.</p>
                 </div>
                 <div class="fade-in">
-                    <h4 style="margin-bottom: 1rem;">What happens if I exceed my bandwidth?</h4>
-                    <p style="color: var(--muted); font-size: 0.9rem;">We don't cut off your traffic. You'll be billed at a flat rate of $0.05 per additional GB on Starter and Pro plans.</p>
+                    <h4 style="margin-bottom: 1rem;">What platforms do you support?</h4>
+                    <p style="color: var(--muted); font-size: 0.9rem;">I have extensive hands-on experience optimizing setups on Cloudflare, Fastly, AWS CloudFront, Akamai, and Vercel Edge. I can tune any third-party CDN you are currently using.</p>
                 </div>
                 <div class="fade-in">
-                    <h4 style="margin-bottom: 1rem;">Can I cancel anytime?</h4>
-                    <p style="color: var(--muted); font-size: 0.9rem;">Yes, you can cancel your subscription at any time. You will retain access to your plan until the end of the current billing cycle.</p>
+                    <h4 style="margin-bottom: 1rem;">Are there any monthly traffic caps or egress costs?</h4>
+                    <p style="color: var(--muted); font-size: 0.9rem;">No. Since I configure your existing CDN accounts directly, your traffic volume billing remains entirely with your CDN provider. My consulting sprints are charged as a single fixed fee with zero hidden usage charges.</p>
                 </div>
                 <div class="fade-in">
-                    <h4 style="margin-bottom: 1rem;">Do you offer non-profit discounts?</h4>
-                    <p style="color: var(--muted); font-size: 0.9rem;">Yes! We offer a 50% discount for registered non-profit organizations. Contact us to learn more.</p>
+                    <h4 style="margin-bottom: 1rem;">How long does an Optimization Sprint take?</h4>
+                    <p style="color: var(--muted); font-size: 0.9rem;">A standard optimization sprint takes between 2 to 3 weeks. This includes initial diagnostics, writing custom edge rules, sandbox testing, staged deployment, and validation of the cache efficiency improvements.</p>
                 </div>
             </div>
         </div>
@@ -275,29 +243,27 @@
                         </svg>
                         EdgeFlux
                     </a>
-                    <p style="opacity: 0.7; font-size: 0.9rem;">Accelerate the Edge. Eliminate Latency. Own the Cache.
-                    </p>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Freelance CDN & Edge Caching strategy by John Doe. Optimize performance, cut egress fees.</p>
                     <div class="social-icons">
+                        <a href="#" class="social-icon">fb</a>
                         <a href="#" class="social-icon">𝕏</a>
                         <a href="#" class="social-icon">in</a>
-                        <a href="#" class="social-icon">gh</a>
-                        <a href="#" class="social-icon">rss</a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <h4>Services</h4>
                     <ul class="footer-links">
-                        <li><a href="#">CDN Architecture</a></li>
-                        <li><a href="#">TTL Optimization</a></li>
-                        <li><a href="#">Origin Shield</a></li>
-                        <li><a href="#">Edge Analytics</a></li>
+                        <li><a href="services.html">CDN Architecture</a></li>
+                        <li><a href="services.html">TTL Optimization</a></li>
+                        <li><a href="services.html">Origin Shielding</a></li>
+                        <li><a href="services.html">Edge Logic Scripting</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Company</h4>
+                    <h4>Info</h4>
                     <ul class="footer-links">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Me</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
                         <li><a href="results.html">Results</a></li>
                         <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="contact.html">Contact</a></li>
@@ -305,8 +271,7 @@
                 </div>
                 <div class="footer-col">
                     <h4>Stay Updated</h4>
-                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get edge caching tips delivered to
-                        your inbox.</p>
+                    <p style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.7;">Get caching optimization tips sent to your inbox.</p>
                     <form style="display: flex; gap: 0.5rem;">
                         <input type="email" placeholder="email@example.com"
                             style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; flex: 1; color: white;">
@@ -316,7 +281,7 @@
             </div>
             <div
                 style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.8rem; opacity: 0.6;">
-                <p>© 2026 EdgeFlux · All rights reserved.</p>
+                <p>© 2026 EdgeFlux · Freelance CDN Strategy by John Doe. All rights reserved.</p>
             </div>
         </div>
     </footer>

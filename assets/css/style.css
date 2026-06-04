@@ -86,6 +86,12 @@ h6 {
     font-weight: 700;
 }
 
+h2 {
+    font-size: clamp(2.25rem, 5vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
 code,
 pre {
     font-family: 'DM Mono', monospace;
